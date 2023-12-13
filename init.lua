@@ -3,6 +3,7 @@
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+local vim = vim -- Exists to deal with weird lsp for vim api's
 
 vim.opt.cursorline = true
 vim.opt.whichwrap:append '<>[]hl'

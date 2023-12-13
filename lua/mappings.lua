@@ -21,6 +21,7 @@
 -- For more information go here: https://nvchad.com/docs/config/mappings
 
 local M = {}
+local vim = vim -- Deal with lsp for vim api
 
 -- general mapping section, not plugin specific. Loaded by calling utils.load_mappings with no args
 M.general = {
@@ -33,9 +34,9 @@ M.general = {
     ['<C-k>'] = { '<cmd> TmuxNavigateUp<CR>', 'window up' },
     ['<leader>fm'] = {
       function()
-        vim.lsp.buf.format { async = false }
+        vim.lsp.buf.format { async = true }
       end,
-      'LSP Formatting',
+      'LSP formatting',
     },
 
     -- Keymaps for better default experience
@@ -70,7 +71,10 @@ M.general = {
 
     -- Comments
     ['<leader>/'] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", 'Toggle line comment' },
-    ['<leader>b/'] = { "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", 'Toggle block comment' },
+    ['<leader>b/'] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+      'Toggle block comment',
+    },
 
     -- Nvterm
     ['<A-h>'] = { '<cmd>lua require("nvterm.terminal").toggle "horizontal"<cr>', 'Toggle horizontal terminal' },
@@ -81,8 +85,8 @@ M.general = {
     ['<leader>gs'] = { vim.cmd.Git, 'Open git' },
 
     -- Diagnostic
-    ['<leader>dp'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic message' },
-    ['<leader>dn'] = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
+    ['<leader>]d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
+    ['<leader>[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic message' },
     ['<leader>df'] = { vim.diagnostic.open_float, 'floating diagnostic message' },
     ['<leader>dl'] = { vim.diagnostic.setloclist, 'Open diagnostics list' },
   },
@@ -91,8 +95,14 @@ M.general = {
   v = {
     ['<Space>'] = { '<Nop>', opts = { silent = true } },
 
-    ['<leader>/'] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", 'Toggle line comment' },
-    ['<leader>b/'] = { "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", 'Toggle block comment' },
+    ['<leader>/'] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      'Toggle line comment',
+    },
+    ['<leader>b/'] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+      'Toggle block comment',
+    },
   },
 
   -- Insert mode
@@ -286,7 +296,93 @@ M.lspconfig = {
   },
 }
 
-return M
+local gs = package.loaded.gitsigns
+M.gitsigns = {
+  plugin = true,
 
+  n = {
+    [']c'] = {
+      function()
+        if vim.wo.diff then
+          return ']c'
+        end
+        vim.schedule(function()
+          gs.next_hunk()
+        end)
+        return '<Ignore>'
+      end,
+      'Jump to next hunk',
+    },
+
+    ['[c'] = {
+      function()
+        if vim.wo.diff then
+          return '[c'
+        end
+        vim.schedule(function()
+          gs.prev_hunk()
+        end)
+        return '<Ignore>'
+      end,
+      'Jump to previous hunk',
+    },
+
+    ['<leader>hs'] = { gs.stage_hunk, 'git stage hunk' },
+    ['<leader>hr'] = { gs.reset_hunk, 'git reset hunk' },
+    ['<leader>hS'] = { gs.stage_buffer, 'git Stage buffer' },
+    ['<leader>hu'] = { gs.undo_stage_hunk, 'undo stage hunk' },
+    ['<leader>hR'] = { gs.reset_buffer, 'git Reset buffer' },
+    ['<leader>hp'] = { gs.preview_hunk, 'preview git hunk' },
+    ['<leader>hd'] = { gs.diffthis, 'git diff against index' },
+
+    ['<leader>hb'] = {
+      function()
+        gs.blame_line { full = false }
+      end,
+      'git blame line',
+    },
+
+    ['<leader>hD'] = {
+      function()
+        gs.diffthis '~'
+      end,
+      'git diff against last commit',
+    },
+
+    ['<leader>tb'] = { gs.toggle_current_line_blame, 'toggle git blame line' },
+    ['<leader>td'] = { gs.toggle_deleted, 'toggle git show deleted' },
+  },
+
+  v = {
+    [']c'] = {
+      function()
+        if vim.wo.diff then
+          return ']c'
+        end
+        vim.schedule(function()
+          gs.next_hunk()
+        end)
+        return '<Ignore>'
+      end,
+      'Jump to next hunk',
+    },
+
+    ['<leader>hs'] = {
+      function()
+        gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+      end,
+      'stage git hunk',
+    },
+
+    ['<leader>hr'] = {
+      function()
+        gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+      end,
+      'reset git hunk',
+    },
+  },
+}
+
+return M
 
 

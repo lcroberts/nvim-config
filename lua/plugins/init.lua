@@ -24,7 +24,7 @@ return {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ebug and [D]iagnostics', _ = 'which_key_ignore' },
         ['<leader>g'] = { name = '[G]it and [G]oto', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = '[H]arpoon and Git [H]unk', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename and [R]ust', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]ind and [F]ormat', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
@@ -46,6 +46,23 @@ return {
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  -- Adds git related signs to the gutter, as well as utilities for managing changes
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '│' },
+        change = { text = '│' },
+        delete = { text = '󰍵' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+        untracked = { text = '│' },
+      }, -- See `:help gitsigns.txt`
+      on_attach = function(bufnr)
+        require('utils').load_mappings('gitsigns', { buffer = bufnr })
+      end,
+    },
+  },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
