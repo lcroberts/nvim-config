@@ -6,7 +6,8 @@ This is my neovim configuration. It is used as a submodule for my main dotfiles 
 - glow (markdown preview)
 - npm (package management)
 - go (package management)
-- A C compiler (For treesitter)
+- A C compiler (For treesitter) - For windows use mingw
+- Make (For treesitter) - For windows use GnuWin32
 
 To install just the neovim config you can run this command:
 
@@ -33,6 +34,5 @@ For windows:
 rd -r ~\AppData\Local\nvim
 rd -r ~\AppData\Local\nvim-data
 ```
-
 
 
