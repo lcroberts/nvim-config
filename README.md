@@ -35,4 +35,7 @@ rd -r ~\AppData\Local\nvim
 rd -r ~\AppData\Local\nvim-data
 ```
 
+You can find my main dotfiles repo [here.](https://github.com/lcroberts/dotfiles)
+
+
 
