@@ -8,6 +8,7 @@ This is my neovim configuration. It is used as a submodule for my main dotfiles 
 - go (package management)
 - A C compiler (For treesitter) - For windows use mingw
 - Make (For treesitter) - For windows use GnuWin32
+- RipGrep (For telescope)
 
 To install just the neovim config you can run this command:
 
