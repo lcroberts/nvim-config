@@ -3,7 +3,6 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 null_ls.setup {
   sources = {
-    -- null_ls.builtins.completion.luasnip,
     null_ls.builtins.completion.spell,
 
     null_ls.builtins.diagnostics.vale,
@@ -16,9 +15,10 @@ null_ls.setup {
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.trim_whitespace,
     null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.beautysh,
+    null_ls.builtins.formatting.trim_whitespace,
+    null_ls.builtins.formatting.trim_newlines,
   },
 
   on_attach = function(client, bufnr)
@@ -36,6 +36,5 @@ null_ls.setup {
     end
   end,
 }
-
 
 

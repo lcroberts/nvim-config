@@ -1,5 +1,3 @@
--- Lsp keymaps are in lspconfig
-
 -- This config uses the nvchad mapping configuration style. Here is an example:
 -- opts is an optional parameter
 -- ["keys"] = {"action", "description", opts = {}},
@@ -384,5 +382,6 @@ M.gitsigns = {
 }
 
 return M
+
 
 
