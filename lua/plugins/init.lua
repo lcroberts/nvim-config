@@ -1,68 +1,17 @@
 local utils = require 'utils'
 
 return {
+
   {
     'christoomey/vim-tmux-navigator',
     lazy = false,
   },
 
-  {
-    'tpope/vim-surround',
-    lazy = false,
-  },
-
-  -- Useful plugin to show you pending keybinds.
-  {
-    'folke/which-key.nvim',
-    event = 'VeryLazy',
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    config = function()
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ebug and [D]iagnostics', _ = 'which_key_ignore' },
-        ['<leader>g'] = { name = '[G]it and [G]oto', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = '[H]arpoon and Git [H]unk', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename and [R]ust', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = '[F]ind and [F]ormat', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>b'] = { name = '[B]lock', _ = 'which_key_ignore' },
-      }
-
-      -- register which-key VISUAL mode
-      -- required for visual <leader>hs (hunk stage) to work
-      require('which-key').register({
-        ['<leader>'] = { name = 'VISUAL <leader>' },
-        ['<leader>b'] = { name = '[B]lock', _ = 'which_key_ignore' },
-        -- ['<leader>h'] = { 'Git [H]unk' },
-      }, { mode = 'v' })
-      require('which-key').setup {}
-    end,
-  },
-
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  -- Adds git related signs to the gutter, as well as utilities for managing changes
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '│' },
-        change = { text = '│' },
-        delete = { text = '󰍵' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-        untracked = { text = '│' },
-      }, -- See `:help gitsigns.txt`
-      on_attach = function(bufnr)
-        require('utils').load_mappings('gitsigns', { buffer = bufnr })
-      end,
-    },
-  },
+
+  'tpope/vim-surround',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -139,9 +88,6 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/nvim-cmp',
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       {
@@ -157,10 +103,14 @@ return {
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
+    event = 'VeryLazy',
     main = 'ibl',
-    opts = {},
+    opts = {
+      indent = {
+        char = '│',
+        tab_char = '│',
+      },
+    },
   },
 
   -- "gc" to comment visual regions/lines
@@ -204,6 +154,5 @@ return {
     opts = {},
   },
 }
-
 
 
