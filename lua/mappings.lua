@@ -381,6 +381,15 @@ M.gitsigns = {
   },
 }
 
+M.persistence = {
+  plugin = true,
+  n = {
+    ['<leader>qs'] = { '<cmd>lua require("persistence").load()<cr>', 'Load session for current directory' },
+    ['<leader>ql'] = { '<cmd>lua require("persistence").load({last = true})<cr>', 'Load last session' },
+    ['<leader>qd'] = { '<cmd>lua require("persistence").stop()<cr>', 'Stop persistence for current session' },
+  },
+}
+
 return M
 
 
