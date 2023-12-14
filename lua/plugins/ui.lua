@@ -13,7 +13,8 @@ return {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    config = function()
+    event = 'VeryLazy',
+    init = function()
       require('lualine').setup {
         sections = {
           lualine_x = {
@@ -26,8 +27,7 @@ return {
             'filetype',
           },
         },
-
-        -- icons_enabled = false,
+        disabled_filetypes = { 'dashboard' },
         globalstatus = true,
         theme = 'auto',
         component_separators = '|',
@@ -40,6 +40,16 @@ return {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     opts = function()
+      -- IDK why I have to do the text like this but it works
+      local logo = [[
+    ██╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗
+    ██║   ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
+  ██║   ██║███████╗██║     ██║   ██║██║  ██║█████╗
+  ╚██╗ ██╔╝╚════██║██║     ██║   ██║██║  ██║██╔══╝
+     ╚████╔╝ ███████║╚██████╗╚██████╔╝██████╔╝███████╗
+      ╚═══╝  ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
+        ]]
+      logo = string.rep('\n', 8) .. logo .. '\n\n'
       local opts = {
         theme = 'doom',
         hide = {
@@ -48,9 +58,7 @@ return {
           statusline = false,
         },
         config = {
-          week_header = {
-            enable = true,
-          },
+          header = vim.split(logo, '\n'),
           center = {
             { action = 'Telescope find_files', desc = ' Find file', icon = ' ', key = 'f' },
             { action = 'ene | startinsert', desc = ' New file', icon = ' ', key = 'n' },
@@ -191,16 +199,11 @@ return {
       vim.api.nvim_create_autocmd('FileType', {
         pattern = {
           'help',
-          'alpha',
           'dashboard',
-          'neo-tree',
-          'Trouble',
-          'trouble',
           'lazy',
           'mason',
           'notify',
           'toggleterm',
-          'lazyterm',
         },
         callback = function()
           vim.b.miniindentscope_disable = true

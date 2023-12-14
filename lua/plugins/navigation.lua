@@ -15,11 +15,31 @@ local M = {
 
   {
     'akinsho/bufferline.nvim',
+    event = 'VeryLazy',
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
+    opts = {
+      options = {
+        always_show_bufferline = false,
+        diagnostics_indicator = function(_, _, diag)
+          local icons = require('lazyvim.config').icons.diagnostics
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+          return vim.trim(ret)
+        end,
+      },
+    },
+    config = function(_, opts)
       vim.opt.termguicolors = true
-      require('bufferline').setup {}
+      require('bufferline').setup(opts)
+
+      -- Fixes bufferline on session restore
+      vim.api.nvim_create_autocmd('BufAdd', {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
+        end,
+      })
     end,
   },
 
@@ -89,6 +109,4 @@ local M = {
 }
 
 return M
-
-
 
