@@ -83,8 +83,8 @@ M.general = {
     ['<leader>gs'] = { vim.cmd.Git, 'Open git' },
 
     -- Diagnostic
-    ['<leader>]d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
-    ['<leader>[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic message' },
+    [']d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
+    ['[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic message' },
     ['<leader>df'] = { vim.diagnostic.open_float, 'floating diagnostic message' },
     ['<leader>dl'] = { vim.diagnostic.setloclist, 'Open diagnostics list' },
   },
@@ -382,6 +382,5 @@ M.gitsigns = {
 }
 
 return M
-
 
 
