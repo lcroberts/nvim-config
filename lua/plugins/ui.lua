@@ -43,13 +43,14 @@ return {
     opts = function()
       -- IDK why I have to do the text like this but it works
       local logo = [[
-    ██╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗
-    ██║   ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
-  ██║   ██║███████╗██║     ██║   ██║██║  ██║█████╗
-  ╚██╗ ██╔╝╚════██║██║     ██║   ██║██║  ██║██╔══╝
-     ╚████╔╝ ███████║╚██████╗╚██████╔╝██████╔╝███████╗
-      ╚═══╝  ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
+    ██████╗ ███████╗ ██████╗ ██████╗ ██████╗ ███████╗
+  ██╔════╝ ██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
+██║  ███╗███████╗██║     ██║   ██║██║  ██║█████╗
+██║   ██║╚════██║██║     ██║   ██║██║  ██║██╔══╝
+  ╚██████╔╝███████║╚██████╗╚██████╔╝██████╔╝███████╗
+   ╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
         ]]
+      -- GSCode for Generic Studio Code - parody of VSCode
       logo = string.rep('\n', 4) .. logo .. '\n\n'
       local opts = {
         theme = 'doom',
@@ -74,7 +75,7 @@ return {
           footer = function()
             local stats = require('lazy').stats()
             local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-            return { '⚡ VSCode loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
+            return { '⚡ GSCode loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
           end,
         },
       }
@@ -129,11 +130,11 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = true,       -- position the cmdline and popupmenu together
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,       -- add a border to hover docs and signature help
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
         },
       }
     end,
@@ -214,3 +215,4 @@ return {
     end,
   },
 }
+
