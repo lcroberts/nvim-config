@@ -13,13 +13,13 @@ This is my neovim configuration. It is used as a submodule for my main dotfiles 
 To install just the neovim config you can run this command:
 
 ```bash
-git clone https://github.com/lcroberts/nvim-config.git ~/.config/nvim
+git clone git@github.com:lcroberts/nvim-config.git ~/.config/nvim
 ```
 
 For windows:
 
 ```bash
-git clone https://github.com/lcroberts/nvim-config.git $HOME\AppData\Local\nvim
+git clone git@github.com:lcroberts/nvim-config.git $HOME\AppData\Local\nvim
 ```
 
 If you want to remove the installation you can run the following:
