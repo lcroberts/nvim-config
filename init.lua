@@ -104,16 +104,6 @@ require('lazy').setup {
   { import = 'plugins' },
 }
 
--- [[Setup nvim-tree.lua]]
-require('nvim-tree').setup {
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-}
-
 -- Create mappings
 -- Lsp keymaps are in lspconfig
 require('utils').load_mappings()
@@ -121,10 +111,8 @@ require('utils').load_mappings()
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
-local autocmd = vim.api.nvim_create_autocmd
-
 -- dont list quickfix buffers
-autocmd('FileType', {
+vim.api.nvim_create_autocmd('FileType', {
   pattern = 'qf',
   callback = function()
     vim.opt_local.buflisted = false

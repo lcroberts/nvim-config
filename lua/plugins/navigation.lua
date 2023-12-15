@@ -6,9 +6,18 @@ local M = {
     event = { 'BufReadPre', 'BufNewFile' },
     version = '*',
     lazy = false,
-    config = function()
-      require('nvim-tree').setup {}
-    end,
+    opts = {
+
+      renderer = {
+        group_empty = true,
+      },
+      filters = {
+        dotfiles = true,
+      },
+    },
+    -- config = function()
+    --   require('nvim-tree').setup {}
+    -- end,
   },
 
   {
@@ -20,8 +29,7 @@ local M = {
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
-          (diag.warning and icons.Warn .. diag.warning or '')
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
           return vim.trim(ret)
         end,
       },
@@ -43,6 +51,7 @@ local M = {
 
   {
     'kazhala/close-buffers.nvim',
+    event = 'BufAdd',
     opts = {},
     config = function()
       -- Auto command to remove buffers with no name
@@ -109,3 +118,4 @@ local M = {
 }
 
 return M
+
