@@ -9,6 +9,7 @@ return {
     end,
   },
 
+  'nvim-tree/nvim-web-devicons',
   -- Status line
   {
     -- Set lualine as statusline

@@ -3,11 +3,9 @@ local utils = require 'utils'
 local M = {
   {
     'nvim-tree/nvim-tree.lua',
+    event = { 'BufReadPre', 'BufNewFile' },
     version = '*',
     lazy = false,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
     config = function()
       require('nvim-tree').setup {}
     end,
@@ -17,7 +15,6 @@ local M = {
     'akinsho/bufferline.nvim',
     event = 'VeryLazy',
     version = '*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
       options = {
         always_show_bufferline = false,
@@ -94,6 +91,7 @@ local M = {
 
   {
     'ThePrimeagen/harpoon',
+    event = { 'BufReadPre', 'BufNewFile' },
     branch = 'harpoon2',
     dependencies = {
       'nvim-lua/plenary.nvim',
