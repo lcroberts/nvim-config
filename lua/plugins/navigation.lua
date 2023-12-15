@@ -2,12 +2,16 @@ local utils = require 'utils'
 
 local M = {
   {
-    'nvim-tree/nvim-tree.lua',
-    event = { 'BufReadPre', 'BufNewFile' },
-    version = '*',
+    'christoomey/vim-tmux-navigator',
     lazy = false,
-    opts = {
+  },
 
+  {
+    'nvim-tree/nvim-tree.lua',
+    -- event = { 'BufReadPre', 'BufNewFile' },
+    event = 'VeryLazy',
+    version = '*',
+    opts = {
       renderer = {
         group_empty = true,
       },
@@ -15,9 +19,6 @@ local M = {
         dotfiles = true,
       },
     },
-    -- config = function()
-    --   require('nvim-tree').setup {}
-    -- end,
   },
 
   {
@@ -29,7 +30,8 @@ local M = {
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
+          (diag.warning and icons.Warn .. diag.warning or '')
           return vim.trim(ret)
         end,
       },
@@ -120,4 +122,3 @@ local M = {
 }
 
 return M
-

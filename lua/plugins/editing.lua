@@ -1,23 +1,13 @@
 local utils = require 'utils'
 
 return {
-
-  {
-    'christoomey/vim-tmux-navigator',
-    lazy = false,
-  },
-
   -- Git related plugins
   'tpope/vim-fugitive',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  {
-    'mbbill/undotree',
-    event = { 'BufReadPre', 'BufNewFile' },
-    opts = {},
-  },
+  'mbbill/undotree',
 
   {
     'williamboman/mason.nvim',
