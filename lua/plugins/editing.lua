@@ -11,6 +11,7 @@ return {
 
   {
     'williamboman/mason.nvim',
+    event = 'VeryLazy',
     opts = {
       max_concurrent_installers = 10,
       automatic_installation = true,
@@ -23,6 +24,7 @@ return {
   {
     'jay-babu/mason-null-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
+    -- event = 'VeryLazy',
     dependencies = {
       'williamboman/mason.nvim',
       'nvimtools/none-ls.nvim',
@@ -52,7 +54,8 @@ return {
 
   {
     'williamboman/mason-lspconfig.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    -- event = { 'BufReadPre', 'BufNewFile' },
+    event = 'VeryLazy',
     opts = {
       ensure_installed = {
         -- 'rust_analyzer',
@@ -128,6 +131,7 @@ return {
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
@@ -146,13 +150,15 @@ return {
 
   {
     'kylechui/nvim-surround',
-    version = '*', -- Use for stability; omit to use `main` branch for the latest features
     event = { 'BufReadPre', 'BufNewFile' },
+    -- event = 'VeryLazy',
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
     opts = {},
   },
 
   {
     'NvChad/nvterm',
+    event = 'VeryLazy',
     opts = {},
   },
 
@@ -167,3 +173,5 @@ return {
     end,
   },
 }
+
+
