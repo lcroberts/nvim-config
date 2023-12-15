@@ -2,36 +2,40 @@ local utils = require 'utils'
 return {
   {
     'mfussenegger/nvim-dap',
-    init = function()
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {},
+    config = function(_, opts)
       utils.load_mappings 'dap'
     end,
   },
   {
     'theHamsta/nvim-dap-virtual-text',
-    lazy = false,
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {},
     config = function(_, opts)
-      require('nvim-dap-virtual-text').setup {}
+      require('nvim-dap-virtual-text').setup(opts)
     end,
   },
+
   {
     'jay-babu/mason-nvim-dap.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'williamboman/mason.nvim',
       'mfussenegger/nvim-dap',
     },
-    opts = {
-      handlers = {},
-    },
-    event = 'VeryLazy',
+    opts = {},
   },
+
   {
     'rcarriga/nvim-dap-ui',
     dependencies = 'mfussenegger/nvim-dap',
-    event = 'VeryLazy',
-    config = function()
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {},
+    config = function(_, opts)
       local dap = require 'dap'
       local dapui = require 'dapui'
-      dapui.setup()
+      dapui.setup(opts)
       dap.listeners.after.event_initialized['dapui_config'] = function()
         dapui.open()
       end

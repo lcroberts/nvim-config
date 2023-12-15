@@ -30,12 +30,6 @@ M.general = {
     ['<C-l>'] = { '<cmd> TmuxNavigateRight<CR>', 'window right' },
     ['<C-j>'] = { '<cmd> TmuxNavigateDown<CR>', 'window down' },
     ['<C-k>'] = { '<cmd> TmuxNavigateUp<CR>', 'window up' },
-    ['<leader>fm'] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      'LSP formatting',
-    },
 
     -- Keymaps for better default experience
     ['<Space>'] = { '<Nop>', opts = { silent = true } },
@@ -67,13 +61,6 @@ M.general = {
     -- Undo Tree
     ['<leader>u'] = { vim.cmd.UndotreeToggle, 'Toggle undo tree' },
 
-    -- Comments
-    ['<leader>/'] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", 'Toggle line comment' },
-    ['<leader>b/'] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-      'Toggle block comment',
-    },
-
     -- Nvterm
     ['<A-h>'] = { '<cmd>lua require("nvterm.terminal").toggle "horizontal"<cr>', 'Toggle horizontal terminal' },
     ['<A-v>'] = { '<cmd>lua require("nvterm.terminal").toggle "vertical"<cr>', 'Toggle vertical terminal' },
@@ -81,26 +68,11 @@ M.general = {
 
     -- Vim Fugitive (Git)
     ['<leader>gs'] = { vim.cmd.Git, 'Open git' },
-
-    -- Diagnostic
-    [']d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
-    ['[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic message' },
-    ['<leader>df'] = { vim.diagnostic.open_float, 'floating diagnostic message' },
-    ['<leader>dl'] = { vim.diagnostic.setloclist, 'Open diagnostics list' },
   },
 
   -- Visual mode
   v = {
     ['<Space>'] = { '<Nop>', opts = { silent = true } },
-
-    ['<leader>/'] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      'Toggle line comment',
-    },
-    ['<leader>b/'] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-      'Toggle block comment',
-    },
   },
 
   -- Insert mode
@@ -233,6 +205,12 @@ M.telescope = {
 M.lspconfig = {
   plugin = true,
   n = {
+    ['<leader>fm'] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      'LSP formatting',
+    },
     ['<leader>rn'] = {
       function()
         vim.lsp.buf.rename()
@@ -291,6 +269,12 @@ M.lspconfig = {
       end,
       '[W]orkspace [L]ist Folders',
     },
+
+    -- Diagnostic
+    [']d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
+    ['[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic message' },
+    ['<leader>df'] = { vim.diagnostic.open_float, 'floating diagnostic message' },
+    ['<leader>dl'] = { vim.diagnostic.setloclist, 'Open diagnostics list' },
   },
 }
 
@@ -390,6 +374,25 @@ M.persistence = {
   },
 }
 
+M.comment = {
+  plugin = true,
+  n = {
+    ['<leader>/'] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", 'Toggle line comment' },
+    ['<leader>b/'] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+      'Toggle block comment',
+    },
+  },
+  v = {
+    ['<leader>/'] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      'Toggle line comment',
+    },
+    ['<leader>b/'] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+      'Toggle block comment',
+    },
+  },
+}
+
 return M
-
-

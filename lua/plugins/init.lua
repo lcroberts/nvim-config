@@ -9,12 +9,15 @@ return {
 
   -- Git related plugins
   'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  'mbbill/undotree',
+  {
+    'mbbill/undotree',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {},
+  },
 
   {
     'williamboman/mason.nvim',
@@ -126,6 +129,10 @@ return {
         extra = false,
       },
     },
+    config = function(_, opts)
+      require('Comment').setup(opts)
+      utils.load_mappings 'comment'
+    end,
   },
 
   {
