@@ -3,8 +3,8 @@ local utils = require 'utils'
 local M = {
   {
     'nvim-tree/nvim-tree.lua',
+    event = 'VeryLazy',
     version = '*',
-    lazy = false,
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
@@ -14,37 +14,8 @@ local M = {
   },
 
   {
-    'akinsho/bufferline.nvim',
-    event = 'VeryLazy',
-    version = '*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    opts = {
-      options = {
-        always_show_bufferline = false,
-        diagnostics_indicator = function(_, _, diag)
-          local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
-          return vim.trim(ret)
-        end,
-      },
-    },
-    config = function(_, opts)
-      vim.opt.termguicolors = true
-      require('bufferline').setup(opts)
-
-      -- Fixes bufferline on session restore
-      vim.api.nvim_create_autocmd('BufAdd', {
-        callback = function()
-          vim.schedule(function()
-            pcall(nvim_bufferline)
-          end)
-        end,
-      })
-    end,
-  },
-
-  {
     'kazhala/close-buffers.nvim',
+    event = 'VeryLazy',
     opts = {},
     config = function()
       -- Auto command to remove buffers with no name
@@ -57,6 +28,7 @@ local M = {
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
+    event = 'VeryLazy',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -81,6 +53,7 @@ local M = {
 
   {
     'kevinhwang91/nvim-ufo',
+    event = 'VeryLazy',
     dependencies = {
       'kevinhwang91/promise-async',
       'nvim-treesitter/nvim-treesitter',
@@ -92,6 +65,7 @@ local M = {
 
   {
     'ThePrimeagen/harpoon',
+    event = 'VeryLazy',
     branch = 'harpoon2',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -109,4 +83,5 @@ local M = {
 }
 
 return M
+
 

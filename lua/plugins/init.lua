@@ -11,8 +11,6 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
-  'tpope/vim-surround',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -20,6 +18,7 @@ return {
 
   {
     'williamboman/mason.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       max_concurrent_installers = 10,
       automatic_installation = true,
@@ -61,6 +60,7 @@ return {
 
   {
     'williamboman/mason-lspconfig.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       ensure_installed = {
         -- 'rust_analyzer',
@@ -84,10 +84,10 @@ return {
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'hrsh7th/nvim-cmp',
 
       -- Additional lua configuration, makes nvim stuff amazing!
       {
@@ -121,6 +121,7 @@ return {
   -- "gc" to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
+    event = 'VeryLazy',
     opts = {
       mappings = {
         basic = false,
@@ -142,16 +143,15 @@ return {
   },
 
   {
-    'windwp/nvim-autopairs',
-    -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    config = function()
-      require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
+    'echasnovski/mini.pairs',
+    event = 'VeryLazy',
+    opts = {},
+  },
+
+  {
+    'echasnovski/mini.surround',
+    event = 'VeryLazy',
+    opts = {},
   },
 
   {
@@ -170,4 +170,5 @@ return {
     end,
   },
 }
+
 

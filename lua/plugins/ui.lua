@@ -67,7 +67,7 @@ return {
             { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'l' },
             { action = 'EnterConfig', desc = ' Config', icon = ' ', key = 'c' },
             { action = 'lua require("persistence").load()', desc = ' Restore Session', icon = ' ', key = 's' },
-            { action = 'lua require("persistence").load({last = true})', desc = ' Restore Last Session', icon = ' ', key = 'L' },
+            { action = 'lua require("persistence").load({last = true})', desc = ' Restore Last Session', icon = ' ', key = 'S' },
             { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },
           },
           footer = function()
@@ -100,7 +100,7 @@ return {
 
   {
     'stevearc/dressing.nvim',
-    lazy = true,
+    event = 'VeryLazy',
     opts = {},
   },
 
@@ -141,7 +141,7 @@ return {
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -208,6 +208,36 @@ return {
         },
         callback = function()
           vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
+  },
+
+  {
+    'akinsho/bufferline.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    version = '*',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    opts = {
+      options = {
+        always_show_bufferline = false,
+        diagnostics_indicator = function(_, _, diag)
+          local icons = require('lazyvim.config').icons.diagnostics
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+          return vim.trim(ret)
+        end,
+      },
+    },
+    config = function(_, opts)
+      vim.opt.termguicolors = true
+      require('bufferline').setup(opts)
+
+      -- Fixes bufferline on session restore
+      vim.api.nvim_create_autocmd('BufAdd', {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
         end,
       })
     end,
