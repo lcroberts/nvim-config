@@ -111,7 +111,8 @@ local M = {
         save_on_ui_close = true,
       },
     },
-    init = function()
+    config = function(_, opts)
+      require('harpoon').setup(opts)
       utils.load_mappings 'harpoon'
     end,
   },

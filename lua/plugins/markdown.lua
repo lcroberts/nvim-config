@@ -21,11 +21,10 @@ return {
       style = 'dark',
     },
     cmd = 'Glow',
-    init = function()
+    config = function(_, opts)
+      require('glow').setup(opts)
       utils.load_mappings 'glow'
     end,
   },
 }
-
-
 
