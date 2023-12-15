@@ -1,6 +1,7 @@
 return {
   -- Autocompletion
   'hrsh7th/nvim-cmp',
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     'L3MON4D3/LuaSnip',
@@ -65,3 +66,5 @@ return {
     }
   end,
 }
+
+

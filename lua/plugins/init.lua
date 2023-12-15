@@ -59,6 +59,7 @@ return {
 
   {
     'williamboman/mason-lspconfig.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       ensure_installed = {
         -- 'rust_analyzer',
@@ -82,10 +83,10 @@ return {
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'hrsh7th/nvim-cmp',
 
       -- Additional lua configuration, makes nvim stuff amazing!
       {
@@ -169,5 +170,3 @@ return {
     end,
   },
 }
-
-
