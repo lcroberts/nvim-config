@@ -14,7 +14,7 @@ return {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     init = function()
       require('lualine').setup {
         sections = {
