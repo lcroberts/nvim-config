@@ -65,7 +65,7 @@ return {
             { action = 'Telescope oldfiles', desc = ' Recent files', icon = ' ', key = 'r' },
             { action = 'Telescope live_grep', desc = ' Find text', icon = ' ', key = 'g' },
             { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'l' },
-            { action = 'SearchConfig', desc = ' Config', icon = ' ', key = 'c' },
+            { action = 'EnterConfig', desc = ' Config', icon = ' ', key = 'c' },
             { action = 'lua require("persistence").load()', desc = ' Restore Session', icon = ' ', key = 's' },
             { action = 'lua require("persistence").load({last = true})', desc = ' Restore Last Session', icon = ' ', key = 'L' },
             { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },

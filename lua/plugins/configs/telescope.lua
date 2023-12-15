@@ -49,11 +49,12 @@ end
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
 -- Custom live_grep function to search in git root
-local function search_config()
+local function enter_config()
   local config_dir = vim.fn.stdpath 'config'
+  vim.api.nvim_exec('cd ' .. config_dir, {})
   require('telescope.builtin').find_files { cwd = config_dir }
 end
 
-vim.api.nvim_create_user_command('SearchConfig', search_config, {})
+vim.api.nvim_create_user_command('EnterConfig', enter_config, {})
 
 
