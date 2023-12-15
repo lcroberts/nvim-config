@@ -18,7 +18,6 @@ return {
 
   {
     'williamboman/mason.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       max_concurrent_installers = 10,
       automatic_installation = true,
@@ -60,7 +59,6 @@ return {
 
   {
     'williamboman/mason-lspconfig.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       ensure_installed = {
         -- 'rust_analyzer',
@@ -84,10 +82,10 @@ return {
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
-    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/nvim-cmp',
 
       -- Additional lua configuration, makes nvim stuff amazing!
       {
@@ -103,7 +101,7 @@ return {
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     main = 'ibl',
     opts = {
       indent = {
@@ -118,10 +116,9 @@ return {
     },
   },
 
-  -- "gc" to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       mappings = {
         basic = false,
@@ -144,13 +141,15 @@ return {
 
   {
     'echasnovski/mini.pairs',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
+    version = false,
     opts = {},
   },
 
   {
-    'echasnovski/mini.surround',
-    event = 'VeryLazy',
+    'kylechui/nvim-surround',
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {},
   },
 
