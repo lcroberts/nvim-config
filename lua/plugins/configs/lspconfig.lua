@@ -18,6 +18,7 @@ lspconfig.bashls.setup {
   capabilities = capabilities,
   filetypes = { 'sh' },
   root_dir = util.find_git_ancestor(),
+  single_file_support = true,
 }
 
 lspconfig.pylsp.setup {
@@ -108,6 +109,5 @@ lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-
 
 
