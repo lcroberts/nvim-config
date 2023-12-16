@@ -32,8 +32,8 @@ rm -rf ~/.local/share/nvim
 For windows:
 
 ```Bash
-rd -r ~\AppData\Local\nvim
-rd -r ~\AppData\Local\nvim-data
+rd /s ~\AppData\Local\nvim
+rd /s ~\AppData\Local\nvim-data
 ```
 
 You can find my main dotfiles repo [here.](https://github.com/lcroberts/dotfiles)
