@@ -29,6 +29,3 @@ return {
     ft = 'rust',
   },
 }
-
-
-

@@ -1,15 +1,16 @@
 local utils = require 'utils'
+
 return {
   {
     'mfussenegger/nvim-dap',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     config = function()
       utils.load_mappings 'dap'
     end,
   },
   {
     'theHamsta/nvim-dap-virtual-text',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     opts = {},
     config = function(_, opts)
       require('nvim-dap-virtual-text').setup(opts)
@@ -18,7 +19,7 @@ return {
 
   {
     'jay-babu/mason-nvim-dap.nvim',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     dependencies = {
       'williamboman/mason.nvim',
       'mfussenegger/nvim-dap',
@@ -29,7 +30,7 @@ return {
   {
     'rcarriga/nvim-dap-ui',
     dependencies = 'mfussenegger/nvim-dap',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     opts = {},
     config = function(_, opts)
       local dap = require 'dap'
@@ -47,5 +48,3 @@ return {
     end,
   },
 }
-
-

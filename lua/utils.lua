@@ -48,5 +48,3 @@ M.load_mappings = function(section, mapping_opt)
 end
 
 return M
-
-

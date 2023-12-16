@@ -26,7 +26,12 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'williamboman/mason.nvim',
-      'nvimtools/none-ls.nvim',
+      {
+        'nvimtools/none-ls.nvim',
+        opts = {
+          update_in_insert = false,
+        },
+      },
     },
     opts = {
       ensure_installed = {
@@ -76,7 +81,7 @@ return {
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
-    event = { 'BufReadPre', 'BufNewFile' }, -- Can't be very lazy, it doesn't work, but this does
+    event = 'LazyFile',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -95,7 +100,7 @@ return {
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     main = 'ibl',
     opts = {
       indent = {
@@ -112,7 +117,7 @@ return {
 
   {
     'numToStr/Comment.nvim',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     opts = {
       mappings = {
         basic = false,
@@ -140,14 +145,14 @@ return {
 
   {
     'echasnovski/mini.pairs',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     version = false,
     opts = {},
   },
 
   {
     'kylechui/nvim-surround',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     version = '*', -- Use for stability; omit to use `main` branch for the latest features
     opts = {},
   },
@@ -172,7 +177,7 @@ return {
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
@@ -239,5 +244,3 @@ return {
     end,
   },
 }
-
-
