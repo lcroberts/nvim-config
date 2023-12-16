@@ -1,14 +1,10 @@
 local utils = require 'utils'
 
 local M = {
-  {
-    'christoomey/vim-tmux-navigator',
-    lazy = false,
-  },
+  'christoomey/vim-tmux-navigator',
 
   {
     'nvim-tree/nvim-tree.lua',
-    -- event = { 'BufReadPre', 'BufNewFile' },
     event = 'VeryLazy',
     version = '*',
     opts = {
@@ -30,8 +26,7 @@ local M = {
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
-          (diag.warning and icons.Warn .. diag.warning or '')
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
           return vim.trim(ret)
         end,
       },
@@ -91,7 +86,7 @@ local M = {
 
   {
     'kevinhwang91/nvim-ufo',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = 'VeryLazy',
     dependencies = {
       'kevinhwang91/promise-async',
       'nvim-treesitter/nvim-treesitter',
@@ -103,7 +98,7 @@ local M = {
 
   {
     'ThePrimeagen/harpoon',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = 'VeryLazy',
     branch = 'harpoon2',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -122,3 +117,4 @@ local M = {
 }
 
 return M
+

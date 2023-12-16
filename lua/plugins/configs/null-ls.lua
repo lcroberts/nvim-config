@@ -3,7 +3,8 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.completion.spell,
+    -- Got annoying
+    -- null_ls.builtins.completion.spell,
 
     null_ls.builtins.diagnostics.vale,
     null_ls.builtins.diagnostics.typos,
