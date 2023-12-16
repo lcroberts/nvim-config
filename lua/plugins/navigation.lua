@@ -18,6 +18,18 @@ local M = {
   },
 
   {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    opts = {
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+        },
+      },
+    },
+  },
+
+  {
     'akinsho/bufferline.nvim',
     event = 'VeryLazy',
     version = '*',
