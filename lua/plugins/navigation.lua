@@ -23,10 +23,10 @@ local M = {
     version = '*',
     opts = {
       options = {
-        always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
+          (diag.warning and icons.Warn .. diag.warning or '')
           return vim.trim(ret)
         end,
       },
@@ -42,18 +42,6 @@ local M = {
             pcall(nvim_bufferline)
           end)
         end,
-      })
-    end,
-  },
-
-  {
-    'kazhala/close-buffers.nvim',
-    event = 'BufAdd',
-    opts = {},
-    config = function()
-      -- Auto command to remove buffers with no name
-      vim.api.nvim_create_autocmd('BufAdd', {
-        command = "lua require('close_buffers').delete({ type = 'nameless', force = true })",
       })
     end,
   },
@@ -117,4 +105,3 @@ local M = {
 }
 
 return M
-

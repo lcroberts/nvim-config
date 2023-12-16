@@ -76,7 +76,7 @@ return {
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = { 'BufReadPre', 'BufNewFile' }, -- Can't be very lazy, it doesn't work, but this does
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -239,4 +239,5 @@ return {
     end,
   },
 }
+
 

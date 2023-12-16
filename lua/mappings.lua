@@ -59,7 +59,10 @@ M.general = {
     ['<leader>e'] = { '<cmd> NvimTreeFocus<cr>', 'Focus filetree' },
 
     -- Undo Tree
-    ['<leader>u'] = { vim.cmd.UndotreeToggle, 'Toggle undo tree' },
+    ['<leader>tu'] = { vim.cmd.UndotreeToggle, 'Toggle undo tree' },
+
+    -- Trouble toggle
+    ['<leader>tt'] = { vim.cmd.TroubleToggle, 'Toggle trouble' },
 
     -- Nvterm
     ['<A-h>'] = { '<cmd>lua require("nvterm.terminal").toggle "horizontal"<cr>', 'Toggle horizontal terminal' },
@@ -396,3 +399,5 @@ M.comment = {
 }
 
 return M
+
+

@@ -213,5 +213,13 @@ return {
       })
     end,
   },
+
+  {
+    'folke/trouble.nvim',
+    event = 'VeryLazy',
+    opts = {
+      height = 20,
+    },
+  },
 }
 
