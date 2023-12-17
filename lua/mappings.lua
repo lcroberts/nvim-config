@@ -297,10 +297,8 @@ M.lspconfig = {
   },
 }
 
-local gs = package.loaded.gitsigns
 M.gitsigns = {
   plugin = true,
-
   n = {
     [']c'] = {
       function()
@@ -308,7 +306,7 @@ M.gitsigns = {
           return ']c'
         end
         vim.schedule(function()
-          gs.next_hunk()
+          package.loaded.gitsigns.next_hunk()
         end)
         return '<Ignore>'
       end,
@@ -321,37 +319,37 @@ M.gitsigns = {
           return '[c'
         end
         vim.schedule(function()
-          gs.prev_hunk()
+          package.loaded.gitsigns.prev_hunk()
         end)
         return '<Ignore>'
       end,
       'Jump to previous hunk',
     },
 
-    ['<leader>hs'] = { gs.stage_hunk, 'git stage hunk' },
-    ['<leader>hr'] = { gs.reset_hunk, 'git reset hunk' },
-    ['<leader>hS'] = { gs.stage_buffer, 'git Stage buffer' },
-    ['<leader>hu'] = { gs.undo_stage_hunk, 'undo stage hunk' },
-    ['<leader>hR'] = { gs.reset_buffer, 'git Reset buffer' },
-    ['<leader>hp'] = { gs.preview_hunk, 'preview git hunk' },
-    ['<leader>hd'] = { gs.diffthis, 'git diff against index' },
+    ['<leader>hs'] = { package.loaded.gitsigns.stage_hunk, 'git stage hunk' },
+    ['<leader>hr'] = { package.loaded.gitsigns.reset_hunk, 'git reset hunk' },
+    ['<leader>hS'] = { package.loaded.gitsigns.stage_buffer, 'git Stage buffer' },
+    ['<leader>hu'] = { package.loaded.gitsigns.undo_stage_hunk, 'undo stage hunk' },
+    ['<leader>hR'] = { package.loaded.gitsigns.reset_buffer, 'git Reset buffer' },
+    ['<leader>hp'] = { package.loaded.gitsigns.preview_hunk, 'preview git hunk' },
+    ['<leader>hd'] = { package.loaded.gitsigns.diffthis, 'git diff against index' },
 
     ['<leader>hb'] = {
       function()
-        gs.blame_line { full = false }
+        package.loaded.gitsigns.blame_line { full = false }
       end,
       'git blame line',
     },
 
     ['<leader>hD'] = {
       function()
-        gs.diffthis '~'
+        package.loaded.gitsigns.diffthis '~'
       end,
       'git diff against last commit',
     },
 
-    ['<leader>tb'] = { gs.toggle_current_line_blame, 'toggle git blame line' },
-    ['<leader>td'] = { gs.toggle_deleted, 'toggle git show deleted' },
+    ['<leader>tb'] = { package.loaded.gitsigns.toggle_current_line_blame, 'toggle git blame line' },
+    ['<leader>td'] = { package.loaded.gitsigns.toggle_deleted, 'toggle git show deleted' },
   },
 
   v = {
@@ -361,7 +359,7 @@ M.gitsigns = {
           return ']c'
         end
         vim.schedule(function()
-          gs.next_hunk()
+          package.loaded.gitsigns.next_hunk()
         end)
         return '<Ignore>'
       end,
@@ -370,14 +368,14 @@ M.gitsigns = {
 
     ['<leader>hs'] = {
       function()
-        gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        package.loaded.gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end,
       'stage git hunk',
     },
 
     ['<leader>hr'] = {
       function()
-        gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        package.loaded.gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end,
       'reset git hunk',
     },
