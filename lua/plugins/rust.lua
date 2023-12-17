@@ -1,4 +1,5 @@
 local utils = require 'utils'
+
 return {
   {
     'simrat39/rust-tools.nvim',

@@ -1,4 +1,5 @@
 local utils = require 'utils'
+
 return {
   {
     'tadmccorkle/markdown.nvim',
@@ -26,5 +27,3 @@ return {
     end,
   },
 }
-
-

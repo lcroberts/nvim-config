@@ -56,5 +56,3 @@ local function enter_config()
 end
 
 vim.api.nvim_create_user_command('EnterConfig', enter_config, {})
-
-
