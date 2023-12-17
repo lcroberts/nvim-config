@@ -67,7 +67,7 @@ local M = {
 
   {
     'kevinhwang91/nvim-ufo',
-    event = 'VeryLazy',
+    event = 'LazyFile',
     dependencies = {
       'kevinhwang91/promise-async',
       'nvim-treesitter/nvim-treesitter',
