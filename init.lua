@@ -11,7 +11,7 @@ vim.opt.whichwrap:append '<>[]hl'
 vim.opt.termguicolors = true
 
 -- Set highlight on search
-vim.o.hlsearch = true
+vim.opt.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -29,7 +29,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.opt.breakindent = true
 -- Visual indicators
-vim.o.colorcolumn = '80'
+vim.opt.colorcolumn = '80'
 -- Save undo history
 vim.opt.undofile = true
 
