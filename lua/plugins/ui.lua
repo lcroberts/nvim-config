@@ -146,11 +146,11 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = true,       -- position the cmdline and popupmenu together
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,       -- add a border to hover docs and signature help
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
         },
       }
     end,
@@ -182,7 +182,7 @@ return {
       require('which-key').register({
         ['<leader>'] = { name = 'VISUAL <leader>' },
         ['<leader>b'] = { name = '[B]lock', _ = 'which_key_ignore' },
-        -- ['<leader>h'] = { 'Git [H]unk' },
+        ['<leader>h'] = { 'Git [H]unk' },
       }, { mode = 'v' })
       require('which-key').setup {}
     end,
@@ -222,6 +222,8 @@ return {
           'mason',
           'notify',
           'toggleterm',
+          'trouble',
+          'neo-tree',
         },
         callback = function()
           vim.b.miniindentscope_disable = true
