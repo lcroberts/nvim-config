@@ -174,7 +174,7 @@ return {
         ['<leader>h'] = { name = '[H]arpoon and Git [H]unk', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename and [R]ust', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]ind and [F]ormat', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+        ['<leader>t'] = { name = '[T]oggle and [T]rouble', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>b'] = { name = '[B]lock', _ = 'which_key_ignore' },
       }

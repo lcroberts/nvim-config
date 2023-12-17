@@ -128,7 +128,7 @@ return {
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    event = 'VeryLazy',
+    event = { 'LazyFile', 'VeryLazy' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
@@ -237,5 +237,34 @@ return {
         },
       }
     end,
+  },
+
+  {
+    'RRethy/vim-illuminate',
+    event = 'LazyFile',
+    opts = {
+      delay = 200,
+      large_file_cutoff = 2000,
+    },
+    config = function(_, opts)
+      require('illuminate').configure(opts)
+      utils.load_mappings 'illuminate'
+    end,
+  },
+
+  -- Finds and lists all of the TODO, HACK, BUG, etc comment
+  -- in your project and loads them into a browsable list.
+  {
+    'folke/todo-comments.nvim',
+    cmd = { 'TodoTrouble', 'TodoTelescope' },
+    event = 'LazyFile',
+    config = true,
+    -- stylua: ignore
+    keys = {
+      { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "<leader>td", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
+      { "<leader>ts", "<cmd>TodoTelescope<cr>",                            desc = "Todo search" },
+    },
   },
 }

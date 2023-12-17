@@ -412,4 +412,22 @@ M.comment = {
   },
 }
 
+M.illuminate = {
+  plugin = true,
+  n = {
+    [']]'] = {
+      function()
+        require('illuminate').goto_next_reference(true)
+      end,
+      'Next reference',
+    },
+    ['[['] = {
+      function()
+        require('illuminate').goto_prev_reference(true)
+      end,
+      'Previous reference',
+    },
+  },
+}
+
 return M
