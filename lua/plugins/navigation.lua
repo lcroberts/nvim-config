@@ -1,7 +1,10 @@
 local utils = require 'utils'
 
 local M = {
-  'christoomey/vim-tmux-navigator',
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
+  },
 
   {
     'akinsho/bufferline.nvim',
@@ -11,8 +14,7 @@ local M = {
       options = {
         diagnostics_indicator = function(_, _, diag)
           local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
-          (diag.warning and icons.Warn .. diag.warning or '')
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
           return vim.trim(ret)
         end,
         offsets = {
