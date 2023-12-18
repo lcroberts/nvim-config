@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 opt.list = true
-opt.pumblend = 20                  -- Popup opacity
+opt.pumblend = 10                  -- Popup opacity
 opt.pumheight = 10                 -- Number of visible items in popum menu
 opt.scrolloff = 5                  -- Keep a number of lines for context
 opt.sidescrolloff = 10             -- Columns of context
@@ -77,7 +77,7 @@ opt.winminwidth = 5                -- Minimum window width
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
---
+
 -- disable nvim intro
 opt.shortmess:append 'sI'
 
