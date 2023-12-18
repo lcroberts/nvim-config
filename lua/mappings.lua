@@ -101,8 +101,12 @@ M.general = {
     ['<C-l>'] = { '<Right>', 'Move right' },
     ['<C-j>'] = { '<Down>', 'Move down' },
     ['<C-k>'] = { '<Up>', 'Move up' },
+
     ['<C-b>'] = { '<Esc>_i', 'Beginning of line' },
-    ['<C-e>'] = { '<End>', 'Beginning of line' },
+    ['<C-e>'] = { '<End>', 'End of line' },
+
+    ['<A-;>'] = { '<End>;', 'Append Semicolon' },
+    ['<A-,>'] = { '<End>,', 'Append Comma' },
   },
 
   -- Terminal mode
