@@ -3,56 +3,56 @@
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
-local vim = vim -- Exists to deal with weird lsp for vim api's
+local opt = vim.opt
 
-vim.opt.cursorline = true
-vim.opt.whichwrap:append '<>[]hl'
+opt.cursorline = true
+opt.whichwrap:append '<>[]hl'
 
-vim.opt.termguicolors = true
+opt.termguicolors = true
 
 -- Set highlight on search
-vim.opt.hlsearch = true
+opt.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
 
 -- Enable relative line numbers
-vim.opt.relativenumber = true
+opt.relativenumber = true
 
 -- Enable mouse mode
-vim.opt.mouse = 'a'
+opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.opt.breakindent = true
+opt.breakindent = true
 -- Visual indicators
-vim.opt.colorcolumn = '80'
+opt.colorcolumn = '80'
 -- Save undo history
-vim.opt.undofile = true
+opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
-vim.opt.splitright = true
+opt.splitright = true
 
 -- Decrease update time
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+opt.updatetime = 250
+opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect,preview'
+opt.completeopt = 'menuone,noselect,preview'
 
 -- Tab stuff
-vim.opt.tabstop = 4      -- A TAB character looks like 4 spaces
-vim.opt.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
-vim.opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-vim.opt.smarttab = true
+opt.tabstop = 4      -- A TAB character looks like 4 spaces
+opt.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
+opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+opt.smarttab = true
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'c' },
   callback = function()
@@ -61,25 +61,25 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.opt.list = true
-vim.opt.pumblend = 20                  -- Popup opacity
-vim.opt.pumheight = 10                 -- Number of visible items in popum menu
-vim.opt.scrolloff = 5                  -- Keep a number of lines for context
-vim.opt.sidescrolloff = 10             -- Columns of context
-vim.opt.shiftround = true              -- Round indent
-vim.opt.showmode = false               -- Status line does this
-vim.opt.smartindent = true             -- Insert mode indents automatically
-vim.opt.spelllang = { 'en' }           -- Spell check language
-vim.opt.virtualedit = 'block'          -- Cursor can move to where there is no character in visual block mode
-vim.opt.wildmode = 'longest:full,full' -- Command line completion mode
-vim.opt.winminwidth = 5                -- Minimum window width
+opt.list = true
+opt.pumblend = 20                  -- Popup opacity
+opt.pumheight = 10                 -- Number of visible items in popum menu
+opt.scrolloff = 5                  -- Keep a number of lines for context
+opt.sidescrolloff = 10             -- Columns of context
+opt.shiftround = true              -- Round indent
+opt.showmode = false               -- Status line does this
+opt.smartindent = true             -- Insert mode indents automatically
+opt.spelllang = { 'en' }           -- Spell check language
+opt.virtualedit = 'block'          -- Cursor can move to where there is no character in visual block mode
+opt.wildmode = 'longest:full,full' -- Command line completion mode
+opt.winminwidth = 5                -- Minimum window width
 
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 --
 -- disable nvim intro
-vim.opt.shortmess:append 'sI'
+opt.shortmess:append 'sI'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
@@ -95,7 +95,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-vim.opt.rtp:prepend(lazypath)
+opt.rtp:prepend(lazypath)
 
 -- Setup lazy file event
 local Event = require 'lazy.core.handler.event'
