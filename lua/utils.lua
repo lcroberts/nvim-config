@@ -47,4 +47,12 @@ M.load_mappings = function(section, mapping_opt)
   end)
 end
 
+M.foldtext = function()
+  local text = vim.treesitter.foldtext() -- The existing line text
+  local line_count = vim.v.foldend - vim.v.foldstart -- It just works
+  local suffix = (' 󰁂 %d '):format(line_count)
+  table.insert(text, { suffix })
+  return text
+end
+
 return M

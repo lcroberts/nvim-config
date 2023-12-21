@@ -74,6 +74,18 @@ opt.virtualedit = 'block' -- Cursor can move to where there is no character in v
 opt.wildmode = 'longest:full,full' -- Command line completion mode
 opt.winminwidth = 5 -- Minimum window width
 
+vim.o.fillchars = [[eob: ,fold: ,foldopen:⮟,foldsep: ,foldclose:⮞]]
+-- Fold column and foldnestmax need to be the same to prevent ugly numbers from appearing
+opt.foldcolumn = 'auto:9' -- Fold column only as wide as it needs to be
+opt.foldlevel = 99 -- Folds open by default
+opt.foldlevelstart = 99
+opt.foldenable = true
+-- The following lines handle how folds are made and displayed
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldtext = "v:lua.require'utils'.foldtext()"
+-- Fold highlighting has to be done after theme is set. It is none in theme config
+
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

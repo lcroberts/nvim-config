@@ -9,6 +9,7 @@ return {
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.highlight('Folded', 'guibg=NONE') -- Remove folded highlight
     end,
   },
 
