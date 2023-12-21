@@ -267,4 +267,10 @@ return {
       { "<leader>ts", "<cmd>TodoTelescope<cr>",                            desc = "Todo search" },
     },
   },
+
+  {
+    'lcroberts/simple-folds.nvim',
+    event = 'LazyFile',
+    opts = {},
+  },
 }
