@@ -83,6 +83,8 @@ M.general = {
 
     -- Vim Fugitive (Git)
     ['<leader>gs'] = { vim.cmd.Git, 'Open git' },
+
+    -- Theme search
   },
 
   -- Visual mode
@@ -218,6 +220,9 @@ M.telescope = {
       '[f]uzzily search [/] in current buffer',
     },
     ['<leader>gf'] = { require('telescope.builtin').git_files, 'Search [G]it [F]iles' },
+
+    -- Theme search
+    ['<leader>th'] = { require('telescope.builtin').colorscheme, '[t]heme search' },
   },
 }
 
