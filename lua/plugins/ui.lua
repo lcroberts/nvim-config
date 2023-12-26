@@ -23,7 +23,7 @@ return {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
-    init = function()
+    config = function()
       require('lualine').setup {
         sections = {
           lualine_x = {
@@ -38,7 +38,6 @@ return {
         },
         disabled_filetypes = { 'dashboard' },
         globalstatus = true,
-        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       }
