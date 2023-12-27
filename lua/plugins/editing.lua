@@ -92,23 +92,23 @@ return {
     end,
   },
 
-  {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    event = 'LazyFile',
-    main = 'ibl',
-    opts = {
-      indent = {
-        char = '│',
-        tab_char = '│',
-      },
-      exclude = {
-        filetypes = {
-          'dashboard',
-        },
-      },
-    },
-  },
+  -- {
+  --   -- Add indentation guides even on blank lines
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   event = 'LazyFile',
+  --   main = 'ibl',
+  --   opts = {
+  --     indent = {
+  --       char = '│',
+  --       tab_char = '│',
+  --     },
+  --     exclude = {
+  --       filetypes = {
+  --         'dashboard',
+  --       },
+  --     },
+  --   },
+  -- },
 
   {
     'numToStr/Comment.nvim',

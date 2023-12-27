@@ -3,18 +3,21 @@ local utils = require 'utils'
 return {
   -- Theme
   {
-    'linrongbin16/colorbox.nvim',
-    lazy = false, -- don't lazy load
-    priority = 1000, -- load at first
-    build = function()
-      require('colorbox').update()
-    end,
-    config = function()
-      require('colorbox').setup {
-        policy = 'single',
-        timing = 'startup',
-      }
-    end,
+    'lcroberts/persistent-colorscheme.nvim',
+    lazy = false,
+    priority = 1000,
+    dependencies = {
+      'RRethy/nvim-base16', -- Lots of baked-in themes and support to add more
+      {
+        'folke/tokyonight.nvim',
+        opts = {
+          style = 'night',
+        },
+      },
+    },
+    opts = {
+      default_colorscheme = 'tokyonight',
+    },
   },
 
   'nvim-tree/nvim-web-devicons',
@@ -153,11 +156,11 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false, -- add a border to hover docs and signature help
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,       -- add a border to hover docs and signature help
         },
       }
     end,
