@@ -17,6 +17,7 @@ return {
     },
     opts = {
       default_colorscheme = 'tokyonight',
+      transparent = true,
     },
   },
 
