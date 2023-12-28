@@ -261,7 +261,7 @@ M.lspconfig = {
       end,
       'Hover Documentation',
     },
-    ['<C-k>'] = {
+    ['<M-k>'] = {
       function()
         vim.lsp.buf.signature_help()
       end,
