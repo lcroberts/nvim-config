@@ -260,18 +260,35 @@ return {
     cmd = { 'TodoTrouble', 'TodoTelescope' },
     event = 'LazyFile',
     config = true,
-    -- stylua: ignore
     keys = {
-      { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>td", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
-      { "<leader>ts", "<cmd>TodoTelescope<cr>",                            desc = "Todo search" },
+      {
+        ']t',
+        function()
+          require('todo-comments').jump_next()
+        end,
+        desc = 'Next todo comment',
+      },
+      {
+        '[t',
+        function()
+          require('todo-comments').jump_prev()
+        end,
+        desc = 'Previous todo comment',
+      },
+      { '<leader>td', '<cmd>TodoTrouble<cr>', desc = 'Todo (Trouble)' },
+      { '<leader>ts', '<cmd>TodoTelescope<cr>', desc = 'Todo search' },
     },
   },
 
   {
-    'lcroberts/simple-folds.nvim',
+    'kevinhwang91/nvim-ufo',
     event = 'LazyFile',
-    opts = {},
+    dependencies = {
+      'kevinhwang91/promise-async',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      require 'plugins.configs.ufo'
+    end,
   },
 }

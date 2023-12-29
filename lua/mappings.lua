@@ -50,6 +50,10 @@ M.general = {
     -- Copy file
     ['<C-c>'] = { '<cmd> %y+<cr>', 'Copy file contents' },
 
+    -- UFO
+    ['zR'] = { require('ufo').openAllFolds, 'Open all folds' },
+    ['zM'] = { require('ufo').closeAllFolds, 'Close all folds' },
+
     -- File Tree
     ['<leader>nn'] = {
       function()
