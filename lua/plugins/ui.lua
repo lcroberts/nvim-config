@@ -50,6 +50,44 @@ return {
   },
 
   {
+    'akinsho/bufferline.nvim',
+    event = 'VeryLazy',
+    version = '*',
+    opts = {
+      options = {
+        always_show_bufferline = false,
+        diagnostics_indicator = function(_, _, diag)
+          local icons = require('lazyvim.config').icons.diagnostics
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+          return vim.trim(ret)
+        end,
+        offsets = {
+          {
+            filetype = 'neo-tree',
+            text = 'Neo-tree',
+            highlight = 'Directory',
+            text_align = 'left',
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      vim.opt.termguicolors = true
+      require('bufferline').setup(opts)
+      require('persistent-colorscheme').add_transparency_groups(vim.tbl_keys(require('bufferline.config').get().highlights))
+
+      -- Fixes bufferline on session restore
+      vim.api.nvim_create_autocmd('BufAdd', {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
+        end,
+      })
+    end,
+  },
+
+  {
     'nvim-neo-tree/neo-tree.nvim',
     event = 'VeryLazy',
     branch = 'v3.x',
@@ -148,11 +186,11 @@ return {
       },
       -- you can enable a preset for easier configuration
       presets = {
-        bottom_search = true,         -- use a classic bottom cmdline for search
-        command_palette = true,       -- position the cmdline and popupmenu together
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false,       -- add a border to hover docs and signature help
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
       },
     },
     dependencies = {

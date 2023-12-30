@@ -275,7 +275,7 @@ return {
         end,
         desc = 'Previous todo comment',
       },
-      { '<leader>td', '<cmd>TodoTrouble<cr>', desc = 'Todo (Trouble)' },
+      { '<leader>td', '<cmd>TodoTrouble<cr>',   desc = 'Todo (Trouble)' },
       { '<leader>ts', '<cmd>TodoTelescope<cr>', desc = 'Todo search' },
     },
   },
