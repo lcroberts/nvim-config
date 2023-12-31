@@ -72,10 +72,7 @@ return {
       },
     },
     config = function(_, opts)
-      vim.opt.termguicolors = true
       require('bufferline').setup(opts)
-      require('persistent-colorscheme').add_transparency_groups(vim.tbl_keys(require('bufferline.config').get().highlights))
-
       -- Fixes bufferline on session restore
       vim.api.nvim_create_autocmd('BufAdd', {
         callback = function()
@@ -84,6 +81,8 @@ return {
           end)
         end,
       })
+      -- local bufferline_highlights = vim.tbl_keys(require('bufferline.config').get().highlights)
+      -- require('persistent-colorscheme').add_excluded_groups(bufferline_highlights)
     end,
   },
 
