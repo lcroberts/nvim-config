@@ -18,7 +18,13 @@ return {
     },
     opts = {
       colorscheme = 'tokyonight',
-      transparent = false,
+      transparent = true,
+
+      transparency_options = {
+        additional_groups = {},
+        excluded_groups = {},
+        transparent_prefixes = { 'Git' },
+      },
     },
   },
 
@@ -58,7 +64,8 @@ return {
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
+          (diag.warning and icons.Warn .. diag.warning or '')
           return vim.trim(ret)
         end,
         offsets = {
@@ -189,11 +196,11 @@ return {
       },
       -- you can enable a preset for easier configuration
       presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
+        bottom_search = true,         -- use a classic bottom cmdline for search
+        command_palette = true,       -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false,       -- add a border to hover docs and signature help
       },
     },
     dependencies = {
@@ -258,24 +265,18 @@ return {
         require('utils').load_mappings('gitsigns', { buffer = bufnr })
       end,
     },
-    config = function(_, opts)
-      require('gitsigns').setup(opts)
-      local highlights = {}
-      for _, hlg in ipairs(require('gitsigns.highlight').hls) do
-        for hl, hldef in pairs(hlg) do
-          table.insert(highlights, hl)
-        end
-      end
-      local gitsigns_highlights = require('gitsigns.highlight').hls
-      local highlight_groups = {}
-
-      for _, hlg in ipairs(gitsigns_highlights) do
-        vim.tbl_map(function(value)
-          table.insert(highlight_groups, value)
-        end, vim.tbl_keys(hlg))
-      end
-      vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, highlight_groups)
-    end,
+    -- config = function(_, opts)
+    --   require('gitsigns').setup(opts)
+    --
+    --   local gitsigns_highlights = require('gitsigns.highlight').hls
+    --   local highlight_groups = {}
+    --   for _, hlg in ipairs(gitsigns_highlights) do
+    --     vim.tbl_map(function(value)
+    --       table.insert(highlight_groups, value)
+    --     end, vim.tbl_keys(hlg))
+    --   end
+    --   vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, highlight_groups)
+    -- end,
   },
 
   {
