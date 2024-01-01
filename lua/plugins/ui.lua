@@ -81,8 +81,12 @@ return {
           end)
         end,
       })
-      -- local bufferline_highlights = vim.tbl_keys(require('bufferline.config').get().highlights)
-      -- require('persistent-colorscheme').add_excluded_groups(bufferline_highlights)
+      vim.g.transparent_groups = vim.list_extend(
+        vim.g.transparent_groups or {},
+        vim.tbl_map(function(v)
+          return v.hl_group
+        end, vim.tbl_values(require('bufferline.config').highlights))
+      )
     end,
   },
 
@@ -254,6 +258,24 @@ return {
         require('utils').load_mappings('gitsigns', { buffer = bufnr })
       end,
     },
+    config = function(_, opts)
+      require('gitsigns').setup(opts)
+      local highlights = {}
+      for _, hlg in ipairs(require('gitsigns.highlight').hls) do
+        for hl, hldef in pairs(hlg) do
+          table.insert(highlights, hl)
+        end
+      end
+      local gitsigns_highlights = require('gitsigns.highlight').hls
+      local highlight_groups = {}
+
+      for _, hlg in ipairs(gitsigns_highlights) do
+        vim.tbl_map(function(value)
+          table.insert(highlight_groups, value)
+        end, vim.tbl_keys(hlg))
+      end
+      vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, highlight_groups)
+    end,
   },
 
   {
