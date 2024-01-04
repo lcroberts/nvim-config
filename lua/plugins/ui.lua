@@ -3,8 +3,8 @@ local utils = require 'utils'
 return {
   -- Theme
   {
-    -- 'lcroberts/persistent-colorscheme.nvim',
-    dir = '~/Projects/Plugins/persistent-colorscheme.nvim',
+    'lcroberts/persistent-colorscheme.nvim',
+    -- dir = '~/Projects/Plugins/persistent-colorscheme.nvim',
     lazy = false,
     priority = 1000,
     dependencies = {
@@ -19,6 +19,11 @@ return {
     opts = {
       colorscheme = 'tokyonight',
       transparent = true,
+      transparency_options = {
+        additional_groups = {},
+        excluded_groups = {},
+        transparent_prefixes = {},
+      },
     },
   },
 
@@ -58,7 +63,8 @@ return {
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
+          (diag.warning and icons.Warn .. diag.warning or '')
           return vim.trim(ret)
         end,
         offsets = {
@@ -189,11 +195,11 @@ return {
       },
       -- you can enable a preset for easier configuration
       presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
+        bottom_search = true,         -- use a classic bottom cmdline for search
+        command_palette = true,       -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false,       -- add a border to hover docs and signature help
       },
     },
     dependencies = {
@@ -257,6 +263,9 @@ return {
       on_attach = function(bufnr)
         require('utils').load_mappings('gitsigns', { buffer = bufnr })
       end,
+    },
+    dependencies = {
+      'lcroberts/persistent-colorscheme.nvim',
     },
     config = function(_, opts)
       require('gitsigns').setup(opts)
