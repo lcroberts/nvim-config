@@ -39,11 +39,11 @@ M.general = {
     ['k'] = { "v:count == 0 ? 'gk' : 'k'", opts = { expr = true, silent = true } },
     ['j'] = { "v:count == 0 ? 'gj' : 'j'", opts = { expr = true, silent = true } },
 
-    -- Buffer tabthrough
-    ['<Tab>'] = { '<cmd> bnext<cr>', 'Move to next buffer' },
-    ['<S-Tab>'] = { '<cmd> bprevious<cr>', 'Move to previous buffer' },
     -- Buffer close
     ['<leader>x'] = { '<cmd> bdelete<cr>', 'Close current buffer' },
+
+    -- Netrw
+    ['<leader>nn'] = { '<cmd>Ntree<cr>', 'Open Netrw' },
 
     -- Save for Ctrl+s
     ['<C-s>'] = { '<cmd> w<cr>', 'Save file' },
@@ -67,8 +67,6 @@ M.general = {
 
     -- Vim Fugitive (Git)
     ['<leader>gs'] = { vim.cmd.Git, 'Open git' },
-
-    -- Theme search
   },
 
   -- Visual mode
@@ -238,7 +236,7 @@ M.lspconfig = {
     ['<leader>ds'] = { require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols' },
     ['<leader>ws'] = { require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols' },
 
-    -- See `:help K` for why this keymap
+    --[[ -- See `:help K` for why this keymap
     ['K'] = {
       function()
         vim.lsp.buf.hover()
@@ -251,7 +249,7 @@ M.lspconfig = {
       end,
       'Signature Documentation',
     },
-
+]]
     -- Lesser used LSP functionality
     ['gD'] = {
       function()

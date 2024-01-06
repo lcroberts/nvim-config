@@ -97,7 +97,6 @@ return {
     'lukas-reineke/indent-blankline.nvim',
     event = 'LazyFile',
     main = 'ibl',
-    commit = '0dca9284bce128e60da18693d92999968d6cb523',
     opts = {
       indent = {
         char = '│',
