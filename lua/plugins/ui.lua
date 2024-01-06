@@ -202,4 +202,9 @@ return {
     event = 'LazyFile',
     opts = {},
   },
+
+  {
+    'j-hui/fidget.nvim',
+    opts = {},
+  },
 }
