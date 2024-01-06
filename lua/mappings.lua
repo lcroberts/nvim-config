@@ -72,6 +72,14 @@ M.general = {
   -- Visual mode
   v = {
     ['<Space>'] = { '<Nop>', opts = { silent = true } },
+
+    -- Move visual selecion up and down
+    ['J'] = { ":m '>+1<CR>gv=gv", 'Move selection down' },
+    ['K'] = { ":m '<-2<CR>gv=gv", 'Move selection up' },
+  },
+
+  x = {
+    ['<leader>p'] = { [["_dP]], 'Replace text' },
   },
 
   -- Insert mode
