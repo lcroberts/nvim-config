@@ -54,26 +54,6 @@ M.general = {
     ['zR'] = { require('ufo').openAllFolds, 'Open all folds' },
     ['zM'] = { require('ufo').closeAllFolds, 'Close all folds' },
 
-    -- File Tree
-    ['<leader>nn'] = {
-      function()
-        require('neo-tree.command').execute { toggle = true, dir = vim.loop.cwd() }
-      end,
-      'File Explorer',
-    },
-    ['<leader>nr'] = {
-      function()
-        require('neo-tree.command').execute { toggle = true, dir = vim.lsp.buf.list_workspace_folders()[1] }
-      end,
-      'File Explorer (Git Root)',
-    },
-    ['<leader>ng'] = {
-      function()
-        require('neo-tree.command').execute { source = 'git_status', toggle = true }
-      end,
-      'Git Explorer',
-    },
-
     -- Undo Tree
     ['<leader>tu'] = { vim.cmd.UndotreeToggle, 'Toggle undo tree' },
 

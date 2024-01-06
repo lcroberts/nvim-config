@@ -33,85 +33,49 @@ return {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
-    config = function()
-      require('lualine').setup {
-        sections = {
-          lualine_x = {
-            {
-              require('noice').api.statusline.mode.get,
-              cond = require('noice').api.statusline.mode.has,
-            },
-            'encoding',
-            'fileformat',
-            'filetype',
-          },
-        },
-        disabled_filetypes = { 'dashboard' },
-        globalstatus = true,
-        component_separators = '|',
-        section_separators = '',
-      }
-    end,
+    opts = {},
   },
 
-  {
-    'akinsho/bufferline.nvim',
-    event = 'VeryLazy',
-    version = '*',
-    opts = {
-      options = {
-        always_show_bufferline = false,
-        diagnostics_indicator = function(_, _, diag)
-          local icons = require('lazyvim.config').icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') ..
-          (diag.warning and icons.Warn .. diag.warning or '')
-          return vim.trim(ret)
-        end,
-        offsets = {
-          {
-            filetype = 'neo-tree',
-            text = 'Neo-tree',
-            highlight = 'Directory',
-            text_align = 'left',
-          },
-        },
-      },
-    },
-    config = function(_, opts)
-      require('bufferline').setup(opts)
-      -- Fixes bufferline on session restore
-      vim.api.nvim_create_autocmd('BufAdd', {
-        callback = function()
-          vim.schedule(function()
-            pcall(nvim_bufferline)
-          end)
-        end,
-      })
-      vim.g.transparent_groups = vim.list_extend(
-        vim.g.transparent_groups or {},
-        vim.tbl_map(function(v)
-          return v.hl_group
-        end, vim.tbl_values(require('bufferline.config').highlights))
-      )
-    end,
-  },
-
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    event = 'VeryLazy',
-    branch = 'v3.x',
-    opts = {
-      sort_case_insensitive = false,
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false,
-        },
-      },
-      window = {
-        width = 30,
-      },
-    },
-  },
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   event = 'VeryLazy',
+  --   version = '*',
+  --   opts = {
+  --     options = {
+  --       always_show_bufferline = false,
+  --       diagnostics_indicator = function(_, _, diag)
+  --         local icons = require('lazyvim.config').icons.diagnostics
+  --         local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+  --         return vim.trim(ret)
+  --       end,
+  --       offsets = {
+  --         {
+  --           filetype = 'neo-tree',
+  --           text = 'Neo-tree',
+  --           highlight = 'Directory',
+  --           text_align = 'left',
+  --         },
+  --       },
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     require('bufferline').setup(opts)
+  --     -- Fixes bufferline on session restore
+  --     vim.api.nvim_create_autocmd('BufAdd', {
+  --       callback = function()
+  --         vim.schedule(function()
+  --           pcall(nvim_bufferline)
+  --         end)
+  --       end,
+  --     })
+  --     vim.g.transparent_groups = vim.list_extend(
+  --       vim.g.transparent_groups or {},
+  --       vim.tbl_map(function(v)
+  --         return v.hl_group
+  --       end, vim.tbl_values(require('bufferline.config').highlights))
+  --     )
+  --   end,
+  -- },
 
   {
     'nvimdev/dashboard-nvim',
@@ -179,41 +143,6 @@ return {
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
     opts = {},
-  },
-
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true,
-        },
-      },
-      -- you can enable a preset for easier configuration
-      presets = {
-        bottom_search = true,         -- use a classic bottom cmdline for search
-        command_palette = true,       -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false,       -- add a border to hover docs and signature help
-      },
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      {
-        'rcarriga/nvim-notify',
-        config = function()
-          require('notify').setup {
-            background_colour = '#000000',
-          }
-        end,
-      },
-    },
   },
 
   -- Useful plugin to show you pending keybinds.
