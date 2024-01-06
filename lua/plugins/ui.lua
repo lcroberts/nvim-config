@@ -36,47 +36,6 @@ return {
     opts = {},
   },
 
-  -- {
-  --   'akinsho/bufferline.nvim',
-  --   event = 'VeryLazy',
-  --   version = '*',
-  --   opts = {
-  --     options = {
-  --       always_show_bufferline = false,
-  --       diagnostics_indicator = function(_, _, diag)
-  --         local icons = require('lazyvim.config').icons.diagnostics
-  --         local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
-  --         return vim.trim(ret)
-  --       end,
-  --       offsets = {
-  --         {
-  --           filetype = 'neo-tree',
-  --           text = 'Neo-tree',
-  --           highlight = 'Directory',
-  --           text_align = 'left',
-  --         },
-  --       },
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     require('bufferline').setup(opts)
-  --     -- Fixes bufferline on session restore
-  --     vim.api.nvim_create_autocmd('BufAdd', {
-  --       callback = function()
-  --         vim.schedule(function()
-  --           pcall(nvim_bufferline)
-  --         end)
-  --       end,
-  --     })
-  --     vim.g.transparent_groups = vim.list_extend(
-  --       vim.g.transparent_groups or {},
-  --       vim.tbl_map(function(v)
-  --         return v.hl_group
-  --       end, vim.tbl_values(require('bufferline.config').highlights))
-  --     )
-  --   end,
-  -- },
-
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
@@ -142,7 +101,9 @@ return {
   {
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
-    opts = {},
+    opts = {
+      input_buffer_type = 'dressing',
+    },
   },
 
   -- Useful plugin to show you pending keybinds.
