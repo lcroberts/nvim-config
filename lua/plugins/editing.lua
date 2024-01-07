@@ -158,17 +158,6 @@ return {
     opts = {},
   },
 
-  -- Lua
-  {
-    'folke/persistence.nvim',
-    event = 'BufReadPre', -- this will only start session saving when an actual file was opened
-    opts = {},
-    config = function(_, opts)
-      require('persistence').setup(opts)
-      utils.load_mappings 'persistence'
-    end,
-  },
-
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
