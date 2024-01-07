@@ -39,9 +39,6 @@ M.general = {
     ['k'] = { "v:count == 0 ? 'gk' : 'k'", opts = { expr = true, silent = true } },
     ['j'] = { "v:count == 0 ? 'gj' : 'j'", opts = { expr = true, silent = true } },
 
-    -- Buffer close
-    ['<leader>x'] = { '<cmd> bdelete<cr>', 'Close current buffer' },
-
     -- Netrw
     ['<leader>nn'] = { '<cmd>Ntree<cr>', 'Open Netrw' },
 
