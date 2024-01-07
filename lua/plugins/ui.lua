@@ -99,9 +99,7 @@ return {
   {
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
-    opts = {
-      input_buffer_type = 'dressing',
-    },
+    opts = {},
   },
 
   -- Useful plugin to show you pending keybinds.
