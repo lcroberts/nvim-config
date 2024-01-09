@@ -33,11 +33,6 @@ null_ls.setup {
         update_in_insert = false,
       },
     },
-    null_ls.builtins.diagnostics.revive.with {
-      diagnostic_config = {
-        update_in_insert = false,
-      },
-    },
 
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.stylua,
