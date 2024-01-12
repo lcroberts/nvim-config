@@ -3,11 +3,6 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.diagnostics.vale.with {
-      diagnostic_config = {
-        update_in_insert = false,
-      },
-    },
     null_ls.builtins.diagnostics.typos.with {
       diagnostic_config = {
         update_in_insert = false,
