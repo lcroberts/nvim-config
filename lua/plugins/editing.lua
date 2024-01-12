@@ -42,6 +42,7 @@ return {
         'prettier',
         'beautysh',
         'shellcheck',
+        'golangci_lint',
       },
     },
     automatic_installation = true,
