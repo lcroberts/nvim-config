@@ -71,6 +71,7 @@ opt.spelllang = { 'en' }           -- Spell check language
 opt.virtualedit = 'block'          -- Cursor can move to where there is no character in visual block mode
 opt.wildmode = 'longest:full,full' -- Command line completion mode
 opt.winminwidth = 5                -- Minimum window width
+opt.conceallevel = 1
 
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
