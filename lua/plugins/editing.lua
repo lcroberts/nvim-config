@@ -9,6 +9,8 @@ return {
 
   'mbbill/undotree',
 
+  'triglav/vim-visual-increment',
+
   {
     'williamboman/mason.nvim',
     event = 'VeryLazy',
@@ -263,7 +265,7 @@ return {
         end,
         desc = 'Previous todo comment',
       },
-      { '<leader>td', '<cmd>TodoTrouble<cr>',   desc = 'Todo (Trouble)' },
+      { '<leader>td', '<cmd>TodoTrouble<cr>', desc = 'Todo (Trouble)' },
       { '<leader>ts', '<cmd>TodoTelescope<cr>', desc = 'Todo search' },
     },
   },
