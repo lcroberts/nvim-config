@@ -9,8 +9,6 @@ return {
 
   'mbbill/undotree',
 
-  'triglav/vim-visual-increment',
-
   {
     'williamboman/mason.nvim',
     event = 'VeryLazy',
