@@ -26,29 +26,4 @@ return {
       utils.load_mappings 'glow'
     end,
   },
-
-  {
-    'epwalsh/obsidian.nvim',
-    version = '*', -- recommended, use latest release instead of latest commit
-    ft = 'markdown',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    opts = {
-      workspaces = {
-        {
-          name = 'school',
-          path = '~/Documents/MarkdownNotes/School Notes',
-        },
-        {
-          name = 'misc',
-          path = '~/Documents/MarkdownNotes/Misc Notes',
-        },
-        {
-          name = 'certs',
-          path = '~/Documents/MarkdownNotes/Certification Notes',
-        },
-      },
-    },
-  },
 }
