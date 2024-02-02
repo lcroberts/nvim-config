@@ -248,7 +248,13 @@ return {
     'folke/todo-comments.nvim',
     cmd = { 'TodoTrouble', 'TodoTelescope' },
     event = 'LazyFile',
-    config = true,
+    opts = {
+      signs = true,
+    },
+    config = function(_, opts)
+      require('todo-comments').setup(opts)
+      utils.load_mappings 'todo'
+    end,
   },
 
   {

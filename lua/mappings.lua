@@ -433,4 +433,11 @@ M.trouble = {
   },
 }
 
+M.todo = {
+  plugin = true,
+  n = {
+    ['<leader>tc'] = { '<cmd>TodoQuickFix<cr>', 'Todo Quick Fix' },
+  },
+}
+
 return M
