@@ -19,6 +19,7 @@ null_ls.setup {
       },
     },
     null_ls.builtins.diagnostics.cpplint.with {
+      args = { '--filter=-legal', '$FILENAME' },
       diagnostic_config = {
         update_in_insert = false,
       },
