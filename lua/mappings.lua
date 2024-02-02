@@ -413,4 +413,24 @@ M.illuminate = {
   },
 }
 
+M.trouble = {
+  plugin = true,
+  n = {
+    [']t'] = {
+      function()
+        require('trouble').open { height = 0 }
+        require('trouble').next { skip_groups = true, jump = true }
+      end,
+      'Next Trouble Item',
+    },
+    ['[t'] = {
+      function()
+        require('trouble').open { height = 0 }
+        require('trouble').previous { skip_groups = true, jump = true }
+      end,
+      'Next Trouble Item',
+    },
+  },
+}
+
 return M

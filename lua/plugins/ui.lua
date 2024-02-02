@@ -189,8 +189,12 @@ return {
     'folke/trouble.nvim',
     event = 'VeryLazy',
     opts = {
-      height = 20,
+      height = 10,
     },
+    config = function(_, opts)
+      require('trouble').setup(opts)
+      utils.load_mappings 'trouble'
+    end,
   },
 
   {
