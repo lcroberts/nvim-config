@@ -57,11 +57,6 @@ M.general = {
     -- Trouble toggle
     ['<leader>tt'] = { vim.cmd.TroubleToggle, 'Toggle trouble' },
 
-    -- Nvterm
-    ['<A-h>'] = { '<cmd>lua require("nvterm.terminal").toggle "horizontal"<cr>', 'Toggle horizontal terminal' },
-    ['<A-v>'] = { '<cmd>lua require("nvterm.terminal").toggle "vertical"<cr>', 'Toggle vertical terminal' },
-    ['<A-i>'] = { '<cmd>lua require("nvterm.terminal").toggle "float"<cr>', 'Toggle floating terminal' },
-
     -- Vim Fugitive (Git)
     ['<leader>gs'] = { vim.cmd.Git, 'Open git' },
   },
@@ -92,20 +87,6 @@ M.general = {
 
     ['<A-;>'] = { '<End>;', 'Append Semicolon' },
     ['<A-,>'] = { '<End>,', 'Append Comma' },
-  },
-
-  -- Terminal mode
-  t = {
-    -- Vim Tmux navigation
-    ['<C-h>'] = { '<cmd> TmuxNavigateLeft<CR>', 'window left' },
-    ['<C-l>'] = { '<cmd> TmuxNavigateRight<CR>', 'window right' },
-    ['<C-j>'] = { '<cmd> TmuxNavigateDown<CR>', 'window down' },
-    ['<C-k>'] = { '<cmd> TmuxNavigateUp<CR>', 'window up' },
-
-    -- Nvterm
-    ['<A-h>'] = { '<cmd>lua require("nvterm.terminal").toggle "horizontal"<cr>', 'Toggle horizontal terminal' },
-    ['<A-v>'] = { '<cmd>lua require("nvterm.terminal").toggle "vertical"<cr>', 'Toggle vertical terminal' },
-    ['<A-i>'] = { '<cmd>lua require("nvterm.terminal").toggle "float"<cr>', 'Toggle floating terminal' },
   },
 }
 

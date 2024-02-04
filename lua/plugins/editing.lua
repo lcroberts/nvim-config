@@ -154,12 +154,6 @@ return {
   },
 
   {
-    'NvChad/nvterm',
-    event = 'VeryLazy',
-    opts = {},
-  },
-
-  {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'LazyFile',
