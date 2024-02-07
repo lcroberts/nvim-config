@@ -5,7 +5,16 @@ return {
   'tpope/vim-fugitive',
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  {
+    'tpope/vim-sleuth',
+    event = 'VeryLazy',
+    config = function()
+      -- vim.g.sleuth_filetype_heuristics = 0 - Sample to disable heuristics for filetypes
+      vim.g.sleuth_c_heuristics = 0
+      vim.g.sleuth_cpp_heuristics = 0
+      vim.g.sleuth_go_heuristics = 0
+    end,
+  },
 
   'mbbill/undotree',
 
