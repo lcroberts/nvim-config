@@ -48,6 +48,7 @@ opt.completeopt = 'menuone,noselect,preview'
 -- Tab stuff
 opt.tabstop = 4      -- A TAB character looks like 4 spaces
 opt.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
+opt.shiftwidth = 0
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 opt.smarttab = true
 
