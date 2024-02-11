@@ -23,6 +23,9 @@ return {
         additional_groups = {},
         excluded_groups = {},
         transparent_prefixes = {},
+        always_transparent = {
+          'Folded',
+        },
       },
     },
   },
