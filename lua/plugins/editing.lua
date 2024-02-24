@@ -31,15 +31,10 @@ return {
     opts = {
       ensure_installed = {
         'stylua',
-        'cpplint',
         'selene',
-        'typos',
         'trivy',
-        'cpplint',
-        'clang_format',
         'prettier',
-        'beautysh',
-        'shellcheck',
+        'shfmt',
         'golangci_lint',
         'glow',
       },
@@ -64,6 +59,7 @@ return {
         'clangd',
         'tailwindcss',
         'gopls',
+        'typos_lsp',
       },
     },
     dependencies = {

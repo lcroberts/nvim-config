@@ -114,3 +114,8 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+lspconfig.typos_lsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}

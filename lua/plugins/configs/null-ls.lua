@@ -3,11 +3,6 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.diagnostics.typos.with {
-      diagnostic_config = {
-        update_in_insert = false,
-      },
-    },
     null_ls.builtins.diagnostics.trivy.with {
       diagnostic_config = {
         update_in_insert = false,
@@ -18,24 +13,15 @@ null_ls.setup {
         update_in_insert = false,
       },
     },
-    null_ls.builtins.diagnostics.shellcheck.with {
-      diagnostic_config = {
-        update_in_insert = false,
-      },
-    },
     null_ls.builtins.diagnostics.golangci_lint.with {
       diagnostic_config = {
         update_in_insert = false,
       },
     },
 
-    null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.rustfmt,
-    null_ls.builtins.formatting.beautysh,
-    null_ls.builtins.formatting.trim_whitespace,
-    null_ls.builtins.formatting.trim_newlines,
+    null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.gofmt,
   },
 
