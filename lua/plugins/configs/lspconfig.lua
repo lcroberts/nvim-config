@@ -119,3 +119,8 @@ lspconfig.typos_lsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+lspconfig.nil_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}

@@ -60,6 +60,7 @@ return {
         'tailwindcss',
         'gopls',
         'typos_lsp',
+        'nil_ls',
       },
     },
     dependencies = {
