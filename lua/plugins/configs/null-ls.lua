@@ -23,7 +23,7 @@ null_ls.setup {
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.gofmt,
-    null_ls.builtins.formatting.nixfmt,
+    null_ls.builtins.formatting.alejandra,
   },
 
   on_attach = function(client, bufnr)
