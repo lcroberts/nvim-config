@@ -219,10 +219,10 @@ M.lspconfig = {
     ['gr'] = { require('telescope.builtin').lsp_references, '[G]oto [R]eferences' },
     ['gi'] = { require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation' },
     ['<leader>D'] = { require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition' },
-    ['<leader>ds'] = { require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols' },
+    ['<leader>fs'] = { require('telescope.builtin').lsp_document_symbols, '[F]ind [S]ymbols' },
     ['<leader>ws'] = { require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols' },
 
-    --[[ -- See `:help K` for why this keymap
+    -- See `:help K` for why this keymap
     ['K'] = {
       function()
         vim.lsp.buf.hover()
@@ -235,7 +235,7 @@ M.lspconfig = {
       end,
       'Signature Documentation',
     },
-]]
+
     -- Lesser used LSP functionality
     ['gD'] = {
       function()
