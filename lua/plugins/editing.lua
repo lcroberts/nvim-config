@@ -137,17 +137,14 @@ return {
   },
 
   {
-    'echasnovski/mini.pairs',
+    'echasnovski/mini.nvim',
     event = 'LazyFile',
     version = false,
-    opts = {},
-  },
-
-  {
-    'kylechui/nvim-surround',
-    event = 'LazyFile',
-    version = '*', -- Use for stability; omit to use `main` branch for the latest features
-    opts = {},
+    config = function()
+      require('mini.pairs').setup()
+      vim.keymap.set('n', 's', '<Nop>', {})
+      require('mini.surround').setup()
+    end,
   },
 
   {
