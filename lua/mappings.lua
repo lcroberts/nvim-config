@@ -65,9 +65,11 @@ M.general = {
   v = {
     ['<Space>'] = { '<Nop>', opts = { silent = true } },
 
-    -- Move visual selecion up and down
+    -- Move visual selection around
+    ['H'] = { '<gv', 'Move selection left' },
     ['J'] = { ":m '>+1<CR>gv=gv", 'Move selection down' },
     ['K'] = { ":m '<-2<CR>gv=gv", 'Move selection up' },
+    ['L'] = { '>gv', 'Move selection right' },
   },
 
   x = {
