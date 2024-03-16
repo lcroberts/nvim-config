@@ -9,7 +9,6 @@ This is my neovim configuration. It is used as a submodule for my main dotfiles 
 - Make (For treesitter) - For windows use GnuWin32
 - RipGrep (For telescope)
 - rustup (For cargo package management, rust-analyzer, and rustfmt)
-- Nix (Required for Nil, a nix language server)
 
 To install just the neovim config you can run this command:
 
