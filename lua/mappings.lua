@@ -62,7 +62,7 @@ M.general = {
   },
 
   -- Visual mode
-  v = {
+  x = {
     ['<Space>'] = { '<Nop>', opts = { silent = true } },
 
     -- Move visual selection around
@@ -70,9 +70,6 @@ M.general = {
     ['J'] = { ":m '>+1<CR>gv=gv", 'Move selection down' },
     ['K'] = { ":m '<-2<CR>gv=gv", 'Move selection up' },
     ['L'] = { '>gv', 'Move selection right' },
-  },
-
-  x = {
     ['<leader>p'] = { [["_dP]], 'Replace text' },
   },
 
