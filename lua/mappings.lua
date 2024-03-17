@@ -40,6 +40,8 @@ M.general = {
     ['j'] = { "v:count == 0 ? 'gj' : 'j'", opts = { expr = true, silent = true } },
     ['<C-u>'] = { '<C-u>zz', opts = { silent = true } },
     ['<C-d>'] = { '<C-d>zz', opts = { silent = true } },
+    ['n'] = { 'nzzzv', opts = { silent = true } },
+    ['N'] = { 'Nzzzv', opts = { silent = true } },
 
     -- Netrw
     ['<leader>nn'] = { '<cmd>Ntree<cr>', 'Open Netrw' },
