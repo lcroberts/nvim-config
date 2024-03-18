@@ -92,6 +92,10 @@ M.general = {
     ['<A-;>'] = { '<End>;', 'Append Semicolon' },
     ['<A-,>'] = { '<End>,', 'Append Comma' },
   },
+
+  c = {
+    ['<M-/>'] = { [[\/]] },
+  },
 }
 
 local harpoon = require 'harpoon'
