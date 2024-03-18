@@ -15,6 +15,10 @@ return {
           style = 'night',
         },
       },
+      {
+        'catppuccin/nvim',
+        name = 'catppuccin',
+      },
     },
     opts = {
       colorscheme = 'tokyonight',
