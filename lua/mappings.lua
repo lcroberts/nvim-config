@@ -75,6 +75,7 @@ M.general = {
     ['K'] = { ":m '<-2<CR>gv=gv", 'Move selection up' },
     ['L'] = { '>gv', 'Move selection right' },
     ['<leader>p'] = { [["_dP]], 'Replace text' },
+    ['A'] = { ':s/$/' },
   },
 
   -- Insert mode
