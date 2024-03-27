@@ -2,8 +2,8 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ['<M-j>'] = require('telescope.actions').move_selection_next,
-        ['<M-k>'] = require('telescope.actions').move_selection_previous,
+        ['<C-n>'] = require('telescope.actions').move_selection_next,
+        ['<C-p>'] = require('telescope.actions').move_selection_previous,
       },
     },
     vimgrep_arguments = {
