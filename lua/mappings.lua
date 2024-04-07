@@ -111,7 +111,7 @@ M.harpoon = {
     ['<leader>5'] = { '<cmd> lua require("harpoon"):list():select(5)<cr>', 'Harpoon' },
     ['<leader>ha'] = {
       function()
-        harpoon:list():append()
+        harpoon:list():add()
       end,
       'Harpoon append',
     },
