@@ -21,6 +21,17 @@
 local M = {}
 local vim = vim -- Deal with lsp for vim api
 
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], {})
+vim.keymap.set({ 'n' }, '<leader>Y', [["+Y]], {})
+vim.keymap.set({ 'n' }, '<leader>p', [["+p]], {})
+vim.keymap.set('x', '<leader>p', [["_dP]], {})
+vim.keymap.set('x', '<leader>P', [["_d"+P]], {})
+
+vim.keymap.set('n', '<C-j>', '<cmd>cnext<CR>zz', {})
+vim.keymap.set('n', '<C-k>', '<cmd>cprev<CR>zz', {})
+vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
+vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
+
 -- general mapping section, not plugin specific. Loaded by calling utils.load_mappings with no args
 M.general = {
   -- Normal mode
@@ -46,11 +57,6 @@ M.general = {
     -- Netrw
     ['<leader>nn'] = { '<cmd>Ntree<cr>', 'Open Netrw' },
 
-    -- Save for Ctrl+s
-    ['<C-s>'] = { '<cmd> w<cr>', 'Save file' },
-    -- Copy file
-    ['<C-c>'] = { '<cmd> %y+<cr>', 'Copy file contents' },
-
     -- UFO
     ['zR'] = { require('ufo').openAllFolds, 'Open all folds' },
     ['zM'] = { require('ufo').closeAllFolds, 'Close all folds' },
@@ -74,7 +80,8 @@ M.general = {
     ['J'] = { ":m '>+1<CR>gv=gv", 'Move selection down' },
     ['K'] = { ":m '<-2<CR>gv=gv", 'Move selection up' },
     ['L'] = { '>gv', 'Move selection right' },
-    ['<leader>p'] = { [["_dP]], 'Replace text' },
+
+    -- Append to selected lines
     ['A'] = { ':s/$/' },
   },
 

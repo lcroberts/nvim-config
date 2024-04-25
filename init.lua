@@ -1,4 +1,4 @@
--- Set <space> as the leader key
+-- Set <space> as the leader keyinit
 -- See `:help mapleader`
 
 -- [[ Setting options ]]
@@ -18,10 +18,6 @@ vim.wo.number = true
 opt.relativenumber = true
 -- Enable mouse mode
 opt.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  See `:help 'clipboard'`
-opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
 opt.breakindent = true
@@ -46,8 +42,8 @@ opt.timeoutlen = 300
 opt.completeopt = 'menuone,noselect,preview'
 
 -- Tab stuff
-opt.tabstop = 4 -- A TAB character looks like 4 spaces
-opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+opt.tabstop = 4      -- A TAB character looks like 4 spaces
+opt.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
 opt.shiftwidth = 0
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 opt.smarttab = true
@@ -57,17 +53,17 @@ vim.g.editorconfig_trim_trailing_whitespace = true
 vim.g.editorconfig_insert_final_newline = false
 
 opt.list = true
-opt.pumblend = 10 -- Popup opacity
-opt.pumheight = 10 -- Number of visible items in popum menu
-opt.scrolloff = 5 -- Keep a number of lines for context
-opt.sidescrolloff = 10 -- Columns of context
-opt.shiftround = true -- Round indent
-opt.showmode = false -- Status line does this
-opt.smartindent = true -- Insert mode indents automatically
-opt.spelllang = { 'en' } -- Spell check language
-opt.virtualedit = 'block' -- Cursor can move to where there is no character in visual block mode
+opt.pumblend = 10                  -- Popup opacity
+opt.pumheight = 10                 -- Number of visible items in popum menu
+opt.scrolloff = 5                  -- Keep a number of lines for context
+opt.sidescrolloff = 10             -- Columns of context
+opt.shiftround = true              -- Round indent
+opt.showmode = false               -- Status line does this
+opt.smartindent = true             -- Insert mode indents automatically
+opt.spelllang = { 'en' }           -- Spell check language
+opt.virtualedit = 'block'          -- Cursor can move to where there is no character in visual block mode
 opt.wildmode = 'longest:full,full' -- Command line completion mode
-opt.winminwidth = 5 -- Minimum window width
+opt.winminwidth = 5                -- Minimum window width
 opt.nrformats = 'bin,hex,alpha'
 
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
