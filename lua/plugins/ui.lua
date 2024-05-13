@@ -10,12 +10,6 @@ return {
     dependencies = {
       'RRethy/nvim-base16', -- Lots of baked-in themes and support to add more
       {
-        'folke/tokyonight.nvim',
-        opts = {
-          style = 'night',
-        },
-      },
-      {
         'catppuccin/nvim',
         name = 'catppuccin',
       },
