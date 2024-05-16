@@ -67,6 +67,8 @@ return {
         'tailwindcss',
         'gopls',
         'typos_lsp',
+        'tsserver',
+        'intelephense',
       },
     },
     dependencies = {
