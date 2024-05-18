@@ -31,7 +31,7 @@ vim.keymap.set({ 'n' }, 'n', 'nzzzv', { silent = true })
 vim.keymap.set({ 'n' }, 'N', 'Nzzzv', { silent = true })
 
 -- Netrw
-vim.keymap.set({}, '<leader>nn', '<cmd>Ntree<cr>', { desc = 'Open Netrw' })
+vim.keymap.set({ 'n' }, '<leader>nn', '<cmd>Ntree<cr>', { desc = 'Open Netrw' })
 
 -- UFO
 vim.keymap.set({ 'n' }, 'zR', require('ufo').openAllFolds, { desc = 'Open all folds' })
