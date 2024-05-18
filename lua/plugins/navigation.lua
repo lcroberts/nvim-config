@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local vim = vim
 
 local M = {
   {
@@ -28,7 +28,6 @@ local M = {
     },
     config = function()
       require 'plugins.configs.telescope'
-      utils.load_mappings 'telescope'
     end,
   },
 
@@ -46,8 +45,31 @@ local M = {
       },
     },
     config = function(_, opts)
-      require('harpoon').setup(opts)
-      utils.load_mappings 'harpoon'
+      local harpoon = require 'harpoon'
+
+      harpoon:setup(opts)
+      vim.keymap.set('n', '<leader>ha', function()
+        harpoon:list():add()
+      end)
+      vim.keymap.set('n', '<leader>hl', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+
+      vim.keymap.set('n', '<leader>1', function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set('n', '<leader>2', function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set('n', '<leader>3', function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set('n', '<leader>4', function()
+        harpoon:list():select(4)
+      end)
+      vim.keymap.set('n', '<leader>5', function()
+        harpoon:list():select(5)
+      end)
     end,
   },
 }

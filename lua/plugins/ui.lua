@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local vim = vim
 
 return {
   -- Theme
@@ -148,7 +148,61 @@ return {
         untracked = { text = '│' },
       }, -- See `:help gitsigns.txt`
       on_attach = function(bufnr)
-        require('utils').load_mappings('gitsigns', { buffer = bufnr })
+        -- vim.keymap.set({ 'n' }, ']c', function()
+        --   if vim.wo.diff then
+        --     return ']c'
+        --   end
+        --   vim.schedule(function()
+        --     package.loaded.gitsigns.next_hunk()
+        --   end)
+        --   return '<Ignore>'
+        -- end, { desc = 'Jump to next hunk' })
+        -- vim.keymap.set({ 'n' }, '[c', function()
+        --   if vim.wo.diff then
+        --     return ']c'
+        --   end
+        --   vim.schedule(function()
+        --     package.loaded.gitsigns.prev_hunk()
+        --   end)
+        --   return '<Ignore>'
+        -- end, { desc = 'Jump to prev hunk' })
+
+        vim.keymap.set({ 'n' }, '<leader>hs', package.loaded.gitsigns.stage_hunk, { desc = 'git stage hunk' })
+        vim.keymap.set({ 'n' }, '<leader>hr', package.loaded.gitsigns.reset_hunk, { desc = 'git reset hunk' })
+        vim.keymap.set({ 'n' }, '<leader>hS', package.loaded.gitsigns.stage_buffer, { desc = 'git Stage buffer' })
+        vim.keymap.set({ 'n' }, '<leader>hu', package.loaded.gitsigns.undo_stage_hunk, { desc = 'undo stage hunk' })
+        vim.keymap.set({ 'n' }, '<leader>hR', package.loaded.gitsigns.reset_buffer, { desc = 'git Reset buffer' })
+        vim.keymap.set({ 'n' }, '<leader>hp', package.loaded.gitsigns.preview_hunk, { desc = 'preview git hunk' })
+        vim.keymap.set({ 'n' }, '<leader>hd', package.loaded.gitsigns.diffthis, { desc = 'git diff against index' })
+
+        vim.keymap.set({ 'n' }, '<leader>hb', function()
+          package.loaded.gitsigns.blame_line { full = false }
+        end, { desc = 'git blame line' })
+
+        vim.keymap.set({ 'n' }, '<leader>hD', function()
+          package.loaded.gitsigns.diffthis '~'
+        end, { desc = 'git diff against last commit' })
+
+        vim.keymap.set({ 'n' }, '<leader>tb', package.loaded.gitsigns.toggle_current_line_blame,
+          { desc = 'toggle git blame line' })
+        vim.keymap.set({ 'n' }, '<leader>td', package.loaded.gitsigns.toggle_deleted,
+          { desc = 'toggle git show deleted' })
+        vim.keymap.set({ 'n' }, ']c', function()
+          if vim.wo.diff then
+            return ']c'
+          end
+          vim.schedule(function()
+            package.loaded.gitsigns.next_hunk()
+          end)
+          return '<Ignore>'
+        end, { desc = 'Jump to next hunk' })
+        vim.keymap.set({ 'n' }, '<leader>hs', function()
+          package.loaded.gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = 'stage git hunk' })
+
+        vim.keymap.set({ 'n' }, '<leader>hr', function()
+          package.loaded.gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = 'reset git hunk' })
       end,
     },
     dependencies = {
@@ -168,7 +222,14 @@ return {
     },
     config = function(_, opts)
       require('trouble').setup(opts)
-      utils.load_mappings 'trouble'
+      vim.keymap.set({ 'n' }, ']t', function()
+        require('trouble').open { height = 0 }
+        require('trouble').next { skip_groups = true, jump = true }
+      end, { desc = 'Next Trouble Item' })
+      vim.keymap.set({ 'n' }, '[t', function()
+        require('trouble').open { height = 0 }
+        require('trouble').previous { skip_groups = true, jump = true }
+      end, { desc = 'Next Trouble Item' })
     end,
   },
 

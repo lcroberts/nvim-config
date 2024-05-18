@@ -1,11 +1,17 @@
-local utils = require 'utils'
+local vim = vim
 
 return {
   {
     'mfussenegger/nvim-dap',
     event = 'LazyFile',
     config = function()
-      utils.load_mappings 'dap'
+      vim.keymap.set({ 'n' }, '<leader>db', '<cmd> DapToggleBreakpoint <CR>', { desc = 'Toggle Breakpoint' })
+      vim.keymap.set({ 'n' }, '<leader>dc', '<cmd> DapContinue <CR>', { desc = 'Start or continue debugger' })
+      vim.keymap.set({ 'n' }, '<leader>dsu', function()
+        local widgets = require 'dap.ui.widgets'
+        local sidebar = widgets.sidebar(widgets.scopes)
+        sidebar.open()
+      end, { desc = 'Open debugging sidebar' })
     end,
   },
   {

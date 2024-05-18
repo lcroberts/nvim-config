@@ -1,439 +1,65 @@
--- This config uses the nvchad mapping configuration style. Here is an example:
--- opts is an optional parameter
--- ["keys"] = {"action", "description", opts = {}},
---
--- ["<C-n>"] = {"<cmd> NvimTreeToggle <CR>", "Toggle nvimtree"},
--- ["<leader>ff"] = {"<cmd> Telescope <CR>", "Telescope"},
-
--- opts can have the props: buffer, silent, noremap, nowait and so on.
--- All standard key binding opts are supported.
--- [";"] = { ":", "enter cmdline", opts = { nowait = true } },
-
--- For a more complex keymap
--- ["<leader>tt"] = {
---   function()
---      require("base46").toggle_transparency()
---   end,
---   "toggle transparency",
--- },
--- For more information go here: https://nvchad.com/docs/config/mappings
-
-local M = {}
+-- Mapping mode: n (normal), x (visual), i (insert), c (command)
 local vim = vim -- Deal with lsp for vim api
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], {})
-vim.keymap.set({ 'n' }, '<leader>Y', [["+Y]], {})
-vim.keymap.set({ 'n' }, '<leader>p', [["+p]], {})
-vim.keymap.set('x', '<leader>p', [["_dP]], {})
-vim.keymap.set('x', '<leader>P', [["_d"+P]], {})
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to clipboard' })
+vim.keymap.set({ 'n' }, '<leader>Y', [["+Y]], { desc = 'Yank line to clipboard' })
+vim.keymap.set({ 'n' }, '<leader>p', [["+p]], { desc = 'Paste from clipboard' })
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste without yanking' })
+vim.keymap.set('x', '<leader>P', [["_d"+P]], { desc = 'Paste from clipboard without yanking' })
 
-vim.keymap.set('n', '<C-j>', '<cmd>cnext<CR>zz', {})
-vim.keymap.set('n', '<C-k>', '<cmd>cprev<CR>zz', {})
-vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
-vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
+vim.keymap.set('n', '<C-n>', '<cmd>cnext<CR>zz', { desc = 'Next in quickfix list' })
+vim.keymap.set('n', '<C-p>', '<cmd>cprev<CR>zz', { desc = 'Prev in quickfix list' })
+vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Next in location list' })
+vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Prev in location list' })
 
--- general mapping section, not plugin specific. Loaded by calling utils.load_mappings with no args
-M.general = {
-  -- Normal mode
-  n = {
-    -- Vim Tmux navigation
-    ['<C-h>'] = { '<cmd> TmuxNavigateLeft<CR>', 'window left' },
-    ['<C-l>'] = { '<cmd> TmuxNavigateRight<CR>', 'window right' },
-    ['<C-j>'] = { '<cmd> TmuxNavigateDown<CR>', 'window down' },
-    ['<C-k>'] = { '<cmd> TmuxNavigateUp<CR>', 'window up' },
+vim.keymap.set({ 'n' }, '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'window left' })
+vim.keymap.set({ 'n' }, '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'window right' })
+vim.keymap.set({ 'n' }, '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'window down' })
+vim.keymap.set({ 'n' }, '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'window up' })
 
-    -- Keymaps for better default experience
-    ['<Space>'] = { '<Nop>', opts = { silent = true } },
-    -- Clear highlights
-    ['<Esc>'] = { '<cmd> noh<cr>', 'Clear highlights' },
-    -- Remap for dealing with word wrap
-    ['k'] = { "v:count == 0 ? 'gk' : 'k'", opts = { expr = true, silent = true } },
-    ['j'] = { "v:count == 0 ? 'gj' : 'j'", opts = { expr = true, silent = true } },
-    ['<C-u>'] = { '<C-u>zz', opts = { silent = true } },
-    ['<C-d>'] = { '<C-d>zz', opts = { silent = true } },
-    ['n'] = { 'nzzzv', opts = { silent = true } },
-    ['N'] = { 'Nzzzv', opts = { silent = true } },
+-- Keymaps for better default experience
+vim.keymap.set({ 'n', 'x' }, '<Space>', '<Nop>', { silent = true })
+-- Clear highlights
+vim.keymap.set({ 'n' }, '<Esc>', '<cmd> noh<cr>', { desc = 'Clear highlights' })
+-- Remap for dealing with word wrap
+vim.keymap.set({ 'n' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-    -- Netrw
-    ['<leader>nn'] = { '<cmd>Ntree<cr>', 'Open Netrw' },
+vim.keymap.set({ 'n' }, '<C-u>', '<C-u>zz', { silent = true })
+vim.keymap.set({ 'n' }, '<C-d>', '<C-d>zz', { silent = true })
+vim.keymap.set({ 'n' }, 'n', 'nzzzv', { silent = true })
+vim.keymap.set({ 'n' }, 'N', 'Nzzzv', { silent = true })
 
-    -- UFO
-    ['zR'] = { require('ufo').openAllFolds, 'Open all folds' },
-    ['zM'] = { require('ufo').closeAllFolds, 'Close all folds' },
+-- Netrw
+vim.keymap.set({}, '<leader>nn', '<cmd>Ntree<cr>', { desc = 'Open Netrw' })
 
-    -- Undo Tree
-    ['<leader>tu'] = { vim.cmd.UndotreeToggle, 'Toggle undo tree' },
+-- UFO
+vim.keymap.set({ 'n' }, 'zR', require('ufo').openAllFolds, { desc = 'Open all folds' })
+vim.keymap.set({ 'n' }, 'zM', require('ufo').closeAllFolds, { desc = 'Close all folds' })
 
-    -- Trouble toggle
-    ['<leader>tt'] = { vim.cmd.TroubleToggle, 'Toggle trouble' },
+-- Undo Tree
+vim.keymap.set({ 'n' }, '<leader>tu', vim.cmd.UndotreeToggle, { desc = 'Toggle undo tree' })
+-- Trouble toggle
+vim.keymap.set({ 'n' }, '<leader>tt', vim.cmd.TroubleToggle, { desc = 'Toggle trouble' })
+-- Vim Fugitive (Git)
+vim.keymap.set({ 'n' }, '<leader>gs', vim.cmd.Git, { desc = 'Open git' })
 
-    -- Vim Fugitive (Git)
-    ['<leader>gs'] = { vim.cmd.Git, 'Open git' },
-  },
+vim.keymap.set({ 'x' }, 'A', ':s/$/', { desc = 'Append to lines' })
 
-  -- Visual mode
-  x = {
-    ['<Space>'] = { '<Nop>', opts = { silent = true } },
+-- Move visual selection around
+vim.keymap.set({ 'x' }, 'H', '<gv', { desc = 'Move selection left' })
+vim.keymap.set({ 'x' }, 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set({ 'x' }, 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+vim.keymap.set({ 'x' }, 'L', '>gv', { desc = 'Move selection right' })
 
-    -- Move visual selection around
-    ['H'] = { '<gv', 'Move selection left' },
-    ['J'] = { ":m '>+1<CR>gv=gv", 'Move selection down' },
-    ['K'] = { ":m '<-2<CR>gv=gv", 'Move selection up' },
-    ['L'] = { '>gv', 'Move selection right' },
+-- Navigate in insert mode
+vim.keymap.set({ 'i' }, '<C-h>', '<Left>', { desc = 'Move left' })
+vim.keymap.set({ 'i' }, '<C-l>', '<Right>', { desc = 'Move right' })
+vim.keymap.set({ 'i' }, '<C-j>', '<Down>', { desc = 'Move down' })
+vim.keymap.set({ 'i' }, '<C-k>', '<Up>', { desc = 'Move up' })
+vim.keymap.set({ 'i' }, '<C-b>', '<Esc>_i', { desc = 'Beginning of line' })
+vim.keymap.set({ 'i' }, '<C-e>', '<End>', { desc = 'End of line' })
+vim.keymap.set({ 'i' }, '<A-;>', '<End>;', { desc = 'Append Semicolon' })
+vim.keymap.set({ 'i' }, '<A-,>', '<End>,', { desc = 'Append Comma' })
 
-    -- Append to selected lines
-    ['A'] = { ':s/$/' },
-  },
-
-  -- Insert mode
-  i = {
-    -- Navigate in insert mode
-    ['<C-h>'] = { '<Left>', 'Move left' },
-    ['<C-l>'] = { '<Right>', 'Move right' },
-    ['<C-j>'] = { '<Down>', 'Move down' },
-    ['<C-k>'] = { '<Up>', 'Move up' },
-
-    ['<C-b>'] = { '<Esc>_i', 'Beginning of line' },
-    ['<C-e>'] = { '<End>', 'End of line' },
-
-    ['<A-;>'] = { '<End>;', 'Append Semicolon' },
-    ['<A-,>'] = { '<End>,', 'Append Comma' },
-  },
-
-  c = {
-    ['<M-/>'] = { [[\/]] },
-  },
-}
-
-local harpoon = require 'harpoon'
--- Harpoon is a new section and must be loaded by specifying a section with utils.load_mappings
-M.harpoon = {
-  plugin = true,
-
-  n = {
-    ['<leader>1'] = { '<cmd> lua require("harpoon"):list():select(1)<cr>', 'Harpoon' },
-    ['<leader>2'] = { '<cmd> lua require("harpoon"):list():select(2)<cr>', 'Harpoon' },
-    ['<leader>3'] = { '<cmd> lua require("harpoon"):list():select(3)<cr>', 'Harpoon' },
-    ['<leader>4'] = { '<cmd> lua require("harpoon"):list():select(4)<cr>', 'Harpoon' },
-    ['<leader>5'] = { '<cmd> lua require("harpoon"):list():select(5)<cr>', 'Harpoon' },
-    ['<leader>ha'] = {
-      function()
-        harpoon:list():add()
-      end,
-      'Harpoon append',
-    },
-    ['<leader>hl'] = {
-      function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end,
-      'Harpoon list',
-    },
-  },
-}
-
-M.glow = {
-  plugin = true,
-  n = {
-    ['<leader>tg'] = { vim.cmd.Glow, 'Toggle glow md preview' },
-  },
-}
-
-M.dap = {
-  plugin = true,
-  n = {
-    ['<leader>db'] = {
-      '<cmd> DapToggleBreakpoint <CR>',
-      'Toggle Breakpoint',
-    },
-    ['<leader>dc'] = {
-      '<cmd> DapContinue <CR>',
-      'Start or continue debugger',
-    },
-    ['<leader>dsu'] = {
-      function()
-        local widgets = require 'dap.ui.widgets'
-        local sidebar = widgets.sidebar(widgets.scopes)
-        sidebar.open()
-      end,
-      'Open debugging sidebar',
-    },
-  },
-}
-
-M.crates = {
-  plugin = true,
-  n = {
-    ['<leader>rcu'] = {
-      function()
-        require('crates').upgrade_all_crates()
-      end,
-      'update crates',
-    },
-  },
-}
-
-local function telescope_live_grep_open_files()
-  require('telescope.builtin').live_grep {
-    grep_open_files = true,
-    prompt_title = 'Live Grep in Open Files',
-  }
-end
-M.telescope = {
-  plugin = true,
-  n = {
-    -- See `:help telescope.builtin`
-    ['<leader>fo'] = { require('telescope.builtin').oldfiles, '[f]ind recently [o]pened files' },
-    ['<leader>fb'] = { require('telescope.builtin').buffers, '[f]ind existing [b]uffers' },
-    ['<leader>ff'] = { require('telescope.builtin').find_files, '[f]ind [f]iles' },
-    ['<leader>ft'] = { telescope_live_grep_open_files, '[f]ind [t]ext' },
-    ['<leader>fh'] = { require('telescope.builtin').help_tags, '[f]ind [h]elp page' },
-    ['<leader>fw'] = { require('telescope.builtin').grep_string, '[f]ind current [w]ord' },
-    ['<leader>fg'] = { require('telescope.builtin').live_grep, '[f]ind by [g]rep' },
-    ['<leader>fG'] = { ':LiveGrepGitRoot<cr>', '[f]ind by [G]rep on Git Root' },
-    ['<leader>fd'] = { require('telescope.builtin').diagnostics, '[f]ind [d]iagnostics' },
-    ['<leader>fr'] = { require('telescope.builtin').resume, '[f]ind [r]esume' },
-    ['<leader>f/'] = {
-      function()
-        -- You can pass additional configuration to telescope to change theme, layout, etc.
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end,
-      '[f]uzzily search [/] in current buffer',
-    },
-    ['<leader>gf'] = { require('telescope.builtin').git_files, 'Search [G]it [F]iles' },
-
-    -- Theme search
-    ['<leader>th'] = { require('telescope.builtin').colorscheme, '[t]heme search' },
-  },
-}
-
-M.lspconfig = {
-  plugin = true,
-  n = {
-    ['<leader>fm'] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      'LSP formatting',
-    },
-    ['<leader>rn'] = {
-      function()
-        vim.lsp.buf.rename()
-      end,
-      '[R]e[n]ame',
-    },
-    ['<leader>ca'] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      '[C]ode [A]ction',
-    },
-    ['gd'] = { require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition' },
-    ['gr'] = { require('telescope.builtin').lsp_references, '[G]oto [R]eferences' },
-    ['gi'] = { require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation' },
-    ['<leader>D'] = { require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition' },
-    ['<leader>fs'] = { require('telescope.builtin').lsp_document_symbols, '[F]ind [S]ymbols' },
-    ['<leader>ws'] = { require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols' },
-
-    -- See `:help K` for why this keymap
-    ['K'] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      'Hover Documentation',
-    },
-    ['<M-k>'] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      'Signature Documentation',
-    },
-
-    -- Lesser used LSP functionality
-    ['gD'] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
-      '[G]oto [D]eclaration',
-    },
-    ['<leader>wa'] = {
-      function()
-        vim.lsp.buf.add_workspace_folder()
-      end,
-      '[W]orkspace [A]dd Folder',
-    },
-    ['<leader>wr'] = {
-      function()
-        vim.lsp.buf.remove_workspace_folder()
-      end,
-      '[W]orkspace [R]emove Folder',
-    },
-    ['<leader>wl'] = {
-      function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end,
-      '[W]orkspace [L]ist Folders',
-    },
-
-    -- Diagnostic
-    [']d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
-    ['[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic message' },
-    ['<leader>df'] = { vim.diagnostic.open_float, 'floating diagnostic message' },
-    ['<leader>dl'] = { vim.diagnostic.setloclist, 'Open diagnostics list' },
-  },
-}
-
-M.gitsigns = {
-  plugin = true,
-  n = {
-    [']c'] = {
-      function()
-        if vim.wo.diff then
-          return ']c'
-        end
-        vim.schedule(function()
-          package.loaded.gitsigns.next_hunk()
-        end)
-        return '<Ignore>'
-      end,
-      'Jump to next hunk',
-    },
-
-    ['[c'] = {
-      function()
-        if vim.wo.diff then
-          return '[c'
-        end
-        vim.schedule(function()
-          package.loaded.gitsigns.prev_hunk()
-        end)
-        return '<Ignore>'
-      end,
-      'Jump to previous hunk',
-    },
-
-    ['<leader>hs'] = { package.loaded.gitsigns.stage_hunk, 'git stage hunk' },
-    ['<leader>hr'] = { package.loaded.gitsigns.reset_hunk, 'git reset hunk' },
-    ['<leader>hS'] = { package.loaded.gitsigns.stage_buffer, 'git Stage buffer' },
-    ['<leader>hu'] = { package.loaded.gitsigns.undo_stage_hunk, 'undo stage hunk' },
-    ['<leader>hR'] = { package.loaded.gitsigns.reset_buffer, 'git Reset buffer' },
-    ['<leader>hp'] = { package.loaded.gitsigns.preview_hunk, 'preview git hunk' },
-    ['<leader>hd'] = { package.loaded.gitsigns.diffthis, 'git diff against index' },
-
-    ['<leader>hb'] = {
-      function()
-        package.loaded.gitsigns.blame_line { full = false }
-      end,
-      'git blame line',
-    },
-
-    ['<leader>hD'] = {
-      function()
-        package.loaded.gitsigns.diffthis '~'
-      end,
-      'git diff against last commit',
-    },
-
-    ['<leader>tb'] = { package.loaded.gitsigns.toggle_current_line_blame, 'toggle git blame line' },
-    ['<leader>td'] = { package.loaded.gitsigns.toggle_deleted, 'toggle git show deleted' },
-  },
-
-  v = {
-    [']c'] = {
-      function()
-        if vim.wo.diff then
-          return ']c'
-        end
-        vim.schedule(function()
-          package.loaded.gitsigns.next_hunk()
-        end)
-        return '<Ignore>'
-      end,
-      'Jump to next hunk',
-    },
-
-    ['<leader>hs'] = {
-      function()
-        package.loaded.gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end,
-      'stage git hunk',
-    },
-
-    ['<leader>hr'] = {
-      function()
-        package.loaded.gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end,
-      'reset git hunk',
-    },
-  },
-}
-
-M.comment = {
-  plugin = true,
-  n = {
-    ['<leader>/'] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", 'Toggle line comment' },
-    ['<leader>b/'] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-      'Toggle block comment',
-    },
-  },
-  v = {
-    ['<leader>/'] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      'Toggle line comment',
-    },
-    ['<leader>b/'] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-      'Toggle block comment',
-    },
-  },
-}
-
-M.illuminate = {
-  plugin = true,
-  n = {
-    [']]'] = {
-      function()
-        require('illuminate').goto_next_reference(true)
-      end,
-      'Next reference',
-    },
-    ['[['] = {
-      function()
-        require('illuminate').goto_prev_reference(true)
-      end,
-      'Previous reference',
-    },
-  },
-}
-
-M.trouble = {
-  plugin = true,
-  n = {
-    [']t'] = {
-      function()
-        require('trouble').open { height = 0 }
-        require('trouble').next { skip_groups = true, jump = true }
-      end,
-      'Next Trouble Item',
-    },
-    ['[t'] = {
-      function()
-        require('trouble').open { height = 0 }
-        require('trouble').previous { skip_groups = true, jump = true }
-      end,
-      'Next Trouble Item',
-    },
-  },
-}
-
-M.todo = {
-  plugin = true,
-  n = {
-    ['<leader>tc'] = { '<cmd>TodoQuickFix<cr>', 'Todo Quick Fix' },
-  },
-}
-
-return M
+vim.keymap.set({ 'c' }, '<M-/>', [[\/]], { desc = 'Insert escaped slash' })

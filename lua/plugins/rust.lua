@@ -1,10 +1,10 @@
-local utils = require 'utils'
+local vim = vim
 
 return {
   {
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
-    lazy = false,   -- This plugin is already lazy
+    lazy = false, -- This plugin is already lazy
   },
 
   {
@@ -17,7 +17,9 @@ return {
         sources = { { name = 'crates' } },
       }
       crates.show()
-      utils.load_mappings 'crates'
+      vim.keymap.set({ 'n' }, '<leader>rcu', function()
+        require('crates').upgrade_all_crates()
+      end, { desc = 'update crates' })
     end,
   },
   {

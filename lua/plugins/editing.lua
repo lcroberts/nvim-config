@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local vim = vim
 
 return {
   -- Git related plugins
@@ -128,7 +128,10 @@ return {
     },
     config = function(_, opts)
       require('Comment').setup(opts)
-      utils.load_mappings 'comment'
+      vim.keymap.set({ 'n' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'n' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
+      vim.keymap.set({ 'v' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'v' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
     end,
   },
 
@@ -253,7 +256,13 @@ return {
     },
     config = function(_, opts)
       require('illuminate').configure(opts)
-      utils.load_mappings 'illuminate'
+
+      vim.keymap.set({ 'n' }, ']]', function()
+        require('illuminate').goto_next_reference(true)
+      end, { desc = 'Next reference' })
+      vim.keymap.set({ 'n' }, '[[', function()
+        require('illuminate').goto_prev_reference(true)
+      end, { desc = 'Previous reference' })
     end,
   },
 
@@ -268,7 +277,7 @@ return {
     },
     config = function(_, opts)
       require('todo-comments').setup(opts)
-      utils.load_mappings 'todo'
+      vim.keymap.set({ 'n' }, '<leader>tc', '<cmd>TodoQuickFix<cr>', { desc = 'Todo Quick Fix' })
     end,
   },
 

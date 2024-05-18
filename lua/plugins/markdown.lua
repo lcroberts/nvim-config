@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local vim = vim
 
 return {
   {
@@ -23,7 +23,7 @@ return {
     cmd = 'Glow',
     config = function(_, opts)
       require('glow').setup(opts)
-      utils.load_mappings 'glow'
+      vim.keymap.set({ 'n' }, '<leader>tg', vim.cmd.Glow, { desc = 'Toggle glow md preview' })
     end,
   },
 }
