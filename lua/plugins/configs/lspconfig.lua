@@ -8,6 +8,12 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.offsetEncoding = 'utf-8'
 
+local capabilities_no_format = vim.lsp.protocol.make_client_capabilities()
+capabilities_no_format = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities_no_format.offsetEncoding = 'utf-8'
+capabilities_no_format.documentFormattingProvider = false
+capabilities_no_format.documentRangeFormattingProvider = false
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
@@ -107,8 +113,6 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
 }
 
-capabilities.documentFormattingProvider = false
-capabilities.documentRangeFormattingProvider = false
 lspconfig.intelephense.setup {
-  capabilities = capabilities,
+  capabilities = capabilities_no_format,
 }
