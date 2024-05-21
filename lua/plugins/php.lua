@@ -1,8 +1,8 @@
 return {
-  {
-    'jwalton512/vim-blade',
-    ft = 'blade',
-  },
+  -- {
+  --   'jwalton512/vim-blade',
+  --   ft = 'blade',
+  -- },
 
   {
     'adalessa/laravel.nvim',
@@ -23,6 +23,15 @@ return {
   },
   {
     'windwp/nvim-ts-autotag',
-    opts = {},
+    opts = {
+      per_filetype = {
+        ['php'] = {
+          enable_close = true,
+        },
+        ['blade'] = {
+          enable_close = true,
+        },
+      },
+    },
   },
 }
