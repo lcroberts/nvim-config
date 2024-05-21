@@ -115,4 +115,14 @@ lspconfig.tsserver.setup {
 
 lspconfig.intelephense.setup {
   capabilities = capabilities_no_format,
+  filetypes = { 'php', 'blade' },
+  settings = {
+    intelephense = {
+      filetypes = { 'php', 'blade' },
+      files = {
+        associations = { '*.php', '*.blade.php' }, -- Associating .blade.php files as well
+        maxSize = 5000000,
+      },
+    },
+  },
 }
