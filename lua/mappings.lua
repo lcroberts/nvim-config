@@ -12,10 +12,10 @@ vim.keymap.set('n', '<C-p>', '<cmd>cprev<CR>zz', { desc = 'Prev in quickfix list
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Next in location list' })
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Prev in location list' })
 
-vim.keymap.set({ 'n' }, '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'window left' })
-vim.keymap.set({ 'n' }, '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'window right' })
-vim.keymap.set({ 'n' }, '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'window down' })
-vim.keymap.set({ 'n' }, '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'window up' })
+vim.keymap.set({ 'n', 't' }, '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'window left' })
+vim.keymap.set({ 'n', 't' }, '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'window right' })
+vim.keymap.set({ 'n', 't' }, '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'window down' })
+vim.keymap.set({ 'n', 't' }, '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'window up' })
 
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'x' }, '<Space>', '<Nop>', { silent = true })
