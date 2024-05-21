@@ -293,7 +293,4 @@ return {
       require 'plugins.configs.ufo'
     end,
   },
-  {
-    'jwalton512/vim-blade',
-  },
 }
