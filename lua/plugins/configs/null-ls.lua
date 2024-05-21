@@ -24,6 +24,7 @@ null_ls.setup {
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.pint,
+    null_ls.builtins.formatting.blade_formatter,
   },
 
   on_attach = function(client, bufnr)
