@@ -20,6 +20,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local map = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
+    local vmap = function(keys, func, desc)
+      vim.keymap.set('v', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    end
 
     map('<leader>fm', function()
       vim.lsp.buf.format { async = true }
@@ -29,6 +32,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, '[R]e[n]ame')
 
     map('<leader>ca', function()
+      vim.lsp.buf.code_action()
+    end, '[C]ode [A]ction')
+    vmap('<leader>ca', function()
       vim.lsp.buf.code_action()
     end, '[C]ode [A]ction')
 
@@ -66,6 +72,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
     map('<leader>df', vim.diagnostic.open_float, 'floating diagnostic message')
     map('<leader>dl', vim.diagnostic.setloclist, 'Open diagnostics list')
+
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+      map('<leader>th', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end, '[T]oggle Inlay [H]ints')
+    end
   end,
 })
 

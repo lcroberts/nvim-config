@@ -11,6 +11,7 @@ return {
       'MunifTanjim/nui.nvim',
       'nvimtools/none-ls.nvim',
     },
+    ft = 'php',
     cmd = { 'Sail', 'Artisan', 'Composer', 'Npm', 'Yarn', 'Laravel' },
     keys = {
       { '<leader>la', ':Laravel artisan<cr>' },
