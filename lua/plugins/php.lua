@@ -11,7 +11,7 @@ return {
       'MunifTanjim/nui.nvim',
       'nvimtools/none-ls.nvim',
     },
-    ft = 'php',
+    ft = { 'php', 'blade' },
     cmd = { 'Sail', 'Artisan', 'Composer', 'Npm', 'Yarn', 'Laravel' },
     keys = {
       { '<leader>la', ':Laravel artisan<cr>' },
@@ -20,6 +20,11 @@ return {
     },
     event = { 'VeryLazy' },
     config = true,
+  },
+  {
+    'phpactor/phpactor',
+    ft = { 'php', 'blade' },
+    build = 'composer install --no-dev -o',
   },
   {
     'windwp/nvim-ts-autotag',

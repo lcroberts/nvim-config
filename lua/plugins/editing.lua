@@ -70,7 +70,7 @@ return {
         'gopls',
         'typos_lsp',
         'tsserver',
-        'intelephense',
+        'phpactor',
       },
     },
     dependencies = {
