@@ -1,19 +1,37 @@
 ---@diagnostic disable: missing-fields
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'c', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'bash', 'markdown', 'markdown_inline' },
-  auto_install = true,
 
-  highlight = { enable = true },
+vim.g.skip_ts_context_commentstring_module = true
+
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.blade = {
+  install_info = {
+    url = 'https://github.com/EmranMR/tree-sitter-blade',
+    files = { 'src/parser.c' },
+    branch = 'main',
+  },
+  filetype = 'blade',
+}
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = 'all',
+
+  highlight = { 
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+
   indent = { enable = true },
+
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
+      init_selection = 'gnn',
+      node_incremental = 'grn',
+      scope_incremental = 'grc',
+      node_decremental = 'grm',
     },
   },
+
   textobjects = {
     select = {
       enable = true,
@@ -28,6 +46,7 @@ require('nvim-treesitter.configs').setup {
         ['ic'] = '@class.inner',
       },
     },
+
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
@@ -48,6 +67,7 @@ require('nvim-treesitter.configs').setup {
         ['[C'] = '@class.outer',
       },
     },
+
     swap = {
       enable = true,
       swap_next = {
@@ -60,12 +80,4 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-parser_config.blade = {
-  install_info = {
-    url = 'https://github.com/EmranMR/tree-sitter-blade',
-    files = { 'src/parser.c' },
-    branch = 'main',
-  },
-  filetype = 'blade',
-}
+require('ts_context_commentstring').setup {} 

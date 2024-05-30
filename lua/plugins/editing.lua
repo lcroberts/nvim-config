@@ -1,15 +1,21 @@
+local vim = vim
 return {
   -- Git related plugins
   {
-    'tpope/vim-fugitive',
-    config = function()
-      vim.keymap.set({ 'n' }, '<leader>gs', vim.cmd.Git, { desc = 'Open git' })
-    end,
+    'tpope/vim-rhubarb',
+    dependencies = {
+      {
+        'tpope/vim-fugitive',
+        config = function()
+          vim.keymap.set({ 'n' }, '<leader>gs', vim.cmd.Git, { desc = 'Open git' })
+        end,
+      },
+    },
   },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-  -- Usefule editor commands such as SudoWrite and SudoEdit
+  -- Useful editor commands such as SudoWrite and SudoEdit
   'tpope/vim-eunuch',
 
   {
@@ -157,10 +163,124 @@ return {
     event = { 'LazyFile', 'VeryLazy' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'JoosepAlviste/nvim-ts-context-commentstring',
     },
     build = ':TSUpdate',
     config = function()
       require 'plugins.configs.treesitter'
+    end,
+  },
+
+  {
+    'williamboman/mason.nvim',
+    event = 'VeryLazy',
+    opts = {
+      max_concurrent_installers = 10,
+      automatic_installation = true,
+    },
+    config = function(_, opts)
+      require('mason').setup(opts)
+    end,
+  },
+
+  {
+    'jay-babu/mason-null-ls.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'nvimtools/none-ls.nvim',
+    },
+    opts = {
+      ensure_installed = {
+        'stylua',
+        'selene',
+        'trivy',
+        'prettier',
+        'shfmt',
+        'golangci_lint',
+        'glow',
+        'pint',
+        'blade_formatter',
+      },
+    },
+    automatic_installation = true,
+    config = function(_, opts)
+      require('mason-null-ls').setup(opts)
+      require 'plugins.configs.null-ls'
+    end,
+  },
+
+  {
+    'williamboman/mason-lspconfig.nvim',
+    event = 'VeryLazy',
+    opts = {
+      ensure_installed = {
+        'bashls',
+        'pylsp',
+        'yamlls',
+        'lua_ls',
+        'taplo',
+        'clangd',
+        'tailwindcss',
+        'gopls',
+        'typos_lsp',
+        'volar',
+        'tsserver',
+        'intelephense',
+        'jsonls',
+      },
+    },
+    dependencies = {
+      'williamboman/mason.nvim',
+    },
+    config = function(_, opts)
+      require('mason-lspconfig').setup(opts)
+    end,
+  },
+
+  {
+    -- LSP Configuration & Plugins
+    'neovim/nvim-lspconfig',
+    event = 'LazyFile',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'b0o/schemastore.nvim',
+
+      -- Additional lua configuration, makes nvim stuff amazing!
+      {
+        'folke/neodev.nvim',
+        opts = {},
+      },
+      {
+        'p00f/clangd_extensions.nvim',
+        opts = {},
+      },
+      {
+        'pmizio/typescript-tools.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {},
+      },
+    },
+    config = function()
+      require 'plugins.configs.lspconfig'
+    end,
+  },
+
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'LazyFile',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind-nvim',
+    },
+    config = function()
+      require 'plugins.configs.cmp'
     end,
   },
 }
