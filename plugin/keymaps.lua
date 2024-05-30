@@ -30,9 +30,6 @@ vim.keymap.set({ 'n' }, '<C-d>', '<C-d>zz', { silent = true })
 vim.keymap.set({ 'n' }, 'n', 'nzzzv', { silent = true })
 vim.keymap.set({ 'n' }, 'N', 'Nzzzv', { silent = true })
 
--- Netrw
-vim.keymap.set({ 'n' }, '<leader>nn', '<cmd>Ntree<cr>', { desc = 'Open Netrw' })
-
 vim.keymap.set({ 'x' }, 'A', ':s/$/', { desc = 'Append to lines' })
 
 -- Move visual selection around

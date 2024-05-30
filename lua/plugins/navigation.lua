@@ -72,6 +72,24 @@ local M = {
       end)
     end,
   },
+
+  {
+    'stevearc/oil.nvim',
+    opts = {
+      keymaps = {
+        ["<BS>"] = "actions.parent",
+      },
+      view_options = {
+        show_hidden = true,
+      },
+    },
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function(_, opts)
+        require('oil').setup(opts)
+        vim.keymap.set({ 'n' }, '<leader>nn', '<cmd>Oil<cr>', { desc = 'Open fileview' })
+    end,
+  },
 }
 
 return M

@@ -70,8 +70,6 @@ opt.winminwidth = 5 -- Minimum window width
 opt.nrformats = 'bin,hex,alpha'
 
 opt.undofile = true
-opt.backup = true
-opt.backupdir:remove('.')
 
 -- disable nvim intro
 opt.shortmess:append 'sI'
