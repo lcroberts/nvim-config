@@ -58,6 +58,7 @@ return {
         'tsserver',
         'intelephense',
         'jsonls',
+        'html',
       },
     },
     dependencies = {

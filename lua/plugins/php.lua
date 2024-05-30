@@ -13,7 +13,9 @@ return {
     cmd = { 'Sail', 'Artisan', 'Composer', 'Npm', 'Yarn', 'Laravel' },
     keys = {},
     event = { 'VeryLazy' },
-    config = true,
+    opts = {
+      lsp_server = 'intelephense',
+    },
   },
   {
     'phpactor/phpactor',

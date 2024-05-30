@@ -1,21 +1,11 @@
----@diagnostic disable: missing-fields
+local vim = vim
 
 vim.g.skip_ts_context_commentstring_module = true
-
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-parser_config.blade = {
-  install_info = {
-    url = 'https://github.com/EmranMR/tree-sitter-blade',
-    files = { 'src/parser.c' },
-    branch = 'main',
-  },
-  filetype = 'blade',
-}
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = 'all',
 
-  highlight = { 
+  highlight = {
     enable = true,
     additional_vim_regex_highlighting = true,
   },
@@ -80,4 +70,31 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-require('ts_context_commentstring').setup {} 
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.blade = {
+  install_info = {
+    url = 'https://github.com/EmranMR/tree-sitter-blade',
+    files = { 'src/parser.c' },
+    branch = 'main',
+  },
+  filetype = 'blade',
+}
+
+vim.filetype.add {
+  pattern = {
+    ['.*%.blade%.php'] = 'blade',
+  },
+}
+
+require('ts_context_commentstring').setup {
+  custom_calculation = function(node, language_tree)
+    if vim.bo.filetype == 'blade' and language_tree._lang ~= 'javascript' then
+      return '{{-- %s --}}'
+    end
+  end,
+}
+require('nvim-ts-autotag').setup {
+  aliases = {
+    ['blade'] = 'html',
+  },
+}
