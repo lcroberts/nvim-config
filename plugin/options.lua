@@ -69,7 +69,6 @@ opt.wildmode = 'longest:full,full' -- Command line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.nrformats = 'bin,hex,alpha'
 
-opt.confirm = true
 opt.undofile = true
 opt.backup = true
 opt.backupdir:remove('.')

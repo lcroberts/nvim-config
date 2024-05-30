@@ -9,6 +9,8 @@ return {
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+  -- Usefule editor commands such as SudoWrite and SudoEdit
+  'tpope/vim-eunuch',
 
   {
     'mbbill/undotree',
@@ -140,5 +142,12 @@ return {
     config = function()
       require 'plugins.configs.ufo'
     end,
+  },
+
+  {
+    'whatyouhide/vim-textobj-xmlattr',
+    dependencies = {
+      'kana/vim-textobj-user',
+    },
   },
 }
