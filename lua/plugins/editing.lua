@@ -275,9 +275,10 @@ return {
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
+      'onsails/lspkind-nvim',
+
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind-nvim',
     },
     config = function()
       require 'plugins.configs.cmp'
