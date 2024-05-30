@@ -1,7 +1,3 @@
--- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- Mapping mode: n (normal), x (visual), i (insert), c (command)
 local vim = vim -- Deal with lsp for vim api
 
