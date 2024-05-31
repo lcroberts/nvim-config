@@ -12,7 +12,6 @@ return {
     ft = { 'php', 'blade' },
     cmd = { 'Sail', 'Artisan', 'Composer', 'Npm', 'Yarn', 'Laravel' },
     keys = {},
-    event = { 'VeryLazy' },
     opts = {
       lsp_server = 'intelephense',
     },

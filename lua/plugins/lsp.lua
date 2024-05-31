@@ -60,6 +60,7 @@ return {
         'jsonls',
         'html',
         'sqlls',
+        'cssls',
       },
     },
     dependencies = {
@@ -113,6 +114,15 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'onsails/lspkind-nvim',
+
+      {
+        'Jezda1337/cmp_bootstrap',
+        config = function()
+          require('bootstrap-cmp.config'):setup {
+            file_types = { 'html', 'css' },
+          }
+        end,
+      },
 
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
