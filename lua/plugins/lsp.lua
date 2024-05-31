@@ -59,6 +59,7 @@ return {
         'intelephense',
         'jsonls',
         'html',
+        'sqlls',
       },
     },
     dependencies = {
