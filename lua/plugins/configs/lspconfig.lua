@@ -27,6 +27,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local vmap = function(keys, func, desc)
       vim.keymap.set('v', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
+    local imap = function(keys, func, desc)
+      vim.keymap.set('i', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    end
 
     map('<leader>fm', function()
       vim.lsp.buf.format { async = true }
@@ -76,6 +79,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
     map('<leader>df', vim.diagnostic.open_float, 'floating diagnostic message')
     map('<leader>dl', vim.diagnostic.setloclist, 'Open diagnostics list')
+
+    imap('<C-d>', vim.lsp.buf.signature_help, 'Show signature help')
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
