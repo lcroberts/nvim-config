@@ -91,11 +91,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-lspconfig.tsserver.setup {
-  capabilities = capabilities,
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-}
-
 lspconfig.intelephense.setup {
   capabilities = capabilities_no_format,
   filetypes = { 'php', 'blade' },

@@ -94,6 +94,11 @@ return {
         'p00f/clangd_extensions.nvim',
         opts = {},
       },
+      {
+        'pmizio/typescript-tools.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {},
+      },
     },
     config = function()
       require 'plugins.configs.lspconfig'
