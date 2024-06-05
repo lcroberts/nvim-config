@@ -51,8 +51,4 @@ cmp.setup {
     { name = 'bootstrap' },
     { name = 'buffer' },
   },
-
-  experimental = {
-    ghost_text = true,
-  },
 }

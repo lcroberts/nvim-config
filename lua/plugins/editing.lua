@@ -61,10 +61,16 @@ return {
     },
     config = function(_, opts)
       require('Comment').setup(opts)
-      vim.keymap.set({ 'n' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { desc = 'Toggle line comment' })
-      vim.keymap.set({ 'n' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
-      vim.keymap.set({ 'v' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Toggle line comment' })
-      vim.keymap.set({ 'v' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
+      vim.keymap.set({ 'n' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
+        { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'n' }, '<leader>b/',
+        "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+        { desc = 'Toggle block comment' })
+      vim.keymap.set({ 'v' }, '<leader>/',
+        "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'v' }, '<leader>b/',
+        "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+        { desc = 'Toggle block comment' })
     end,
   },
 
@@ -76,7 +82,7 @@ return {
       require('mini.pairs').setup {
         modes = { insert = true, command = false, terminal = false },
         mappings = {
-          ["'"] = false,
+          -- ["'"] = false,
         },
       }
       vim.keymap.set('n', 's', '<Nop>', {})
