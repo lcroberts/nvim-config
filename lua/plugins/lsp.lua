@@ -54,7 +54,6 @@ return {
         'tailwindcss',
         'gopls',
         'typos_lsp',
-        'volar',
         'tsserver',
         'intelephense',
         'jsonls',
@@ -93,11 +92,6 @@ return {
       },
       {
         'p00f/clangd_extensions.nvim',
-        opts = {},
-      },
-      {
-        'pmizio/typescript-tools.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {},
       },
     },
