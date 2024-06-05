@@ -92,8 +92,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local mason_registry = require 'mason-registry'
-local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-'/node_modules/@vue/language-server'
+local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 lspconfig.tsserver.setup {
   capabilities = capabilities,
   init_options = {
@@ -190,5 +189,9 @@ lspconfig.sqlls.setup {
 }
 
 lspconfig.cssls.setup {
+  capabilities = capabilities_no_format,
+}
+
+lspconfig.emmet_language_server.setup {
   capabilities = capabilities_no_format,
 }

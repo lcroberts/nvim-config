@@ -61,6 +61,7 @@ return {
         'html',
         'sqlls',
         'cssls',
+        'emmet_language_server',
       },
     },
     dependencies = {
