@@ -55,6 +55,7 @@ return {
         'gopls',
         'typos_lsp',
         'volar',
+        'tsserver',
         'intelephense',
         'jsonls',
         'html',
