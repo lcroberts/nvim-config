@@ -148,7 +148,7 @@ lspconfig.clangd.setup {
 }
 
 lspconfig.lua_ls.setup {
-  capabilities = capabilities,
+  capabilities = capabilities_no_format,
 }
 
 lspconfig.gopls.setup {

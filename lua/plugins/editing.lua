@@ -177,4 +177,18 @@ return {
       require 'plugins.configs.treesitter'
     end,
   },
+
+  {
+    'Wansmer/treesj',
+    keys = {
+      { 'g,', '<cmd>TSJToggle <cr>', desc = 'Toggle line split' },
+    },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+    opts = {
+      max_join_length = 240,
+    },
+    config = function(_, opts)
+      require('treesj').setup(opts)
+    end,
+  },
 }
