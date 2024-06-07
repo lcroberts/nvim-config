@@ -22,13 +22,12 @@ return {
     },
     opts = {
       ensure_installed = {
+        'glow',
         'stylua',
         'selene',
-        'trivy',
-        'prettier',
+        -- End of default packages
         'shfmt',
         'golangci_lint',
-        'glow',
         'pint',
         'blade_formatter',
       },
@@ -45,22 +44,23 @@ return {
     event = 'VeryLazy',
     opts = {
       ensure_installed = {
+        'typos_lsp',
+        'yamlls',
+        'jsonls',
+        'taplo',
+        'lua_ls',
+        -- End of default includes
         'bashls',
         'pylsp',
-        'yamlls',
-        'lua_ls',
-        'taplo',
         'clangd',
-        'tailwindcss',
         'gopls',
-        'typos_lsp',
-        'tsserver',
         'intelephense',
-        'jsonls',
+        'tsserver',
         'html',
-        'sqlls',
-        'cssls',
         'emmet_language_server',
+        'tailwindcss',
+        'cssls',
+        'sqlls',
       },
     },
     dependencies = {
