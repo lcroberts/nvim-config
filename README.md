@@ -2,7 +2,8 @@
 
 This is my neovim configuration. It allows for selecting which languages are
 available by creating a file called languages.lua at the root of the config.
-The file should return a table of languages out of the supported options.
+The file should return a table of languages out of the supported options. The
+languages-example.lua file contains all valid languages in the correct format.
 
 
 General Dependencies:

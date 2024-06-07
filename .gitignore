@@ -1,2 +1,3 @@
 **/lazy-lock.json
-languages
+languages.lua
+debug
