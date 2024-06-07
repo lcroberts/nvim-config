@@ -31,6 +31,8 @@ local function get_filename()
   return string.sub(file, 1, string.len(file) - 4)
 end
 
+ls.filetype_extend('javascriptreact', { 'javascript' })
+
 return {
   s(
     {
