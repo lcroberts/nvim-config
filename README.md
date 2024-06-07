@@ -1,9 +1,10 @@
 # Neovim Config
 
 This is my neovim configuration. It allows for selecting which languages are
-available by creating a file called languages.lua at the root of the config.
-The file should return a table of languages out of the supported options. The
-languages-example.lua file contains all valid languages in the correct format.
+available by creating a file called languages.lua in the lua directory of the
+config. The file should return a table of languages out of the supported
+options. The languages-example.lua file contains all valid languages in the
+correct format.
 
 
 General Dependencies:
@@ -11,7 +12,6 @@ General Dependencies:
 - A C compiler (For treesitter) - For windows use mingw
 - Make (For treesitter) - For windows use GnuWin32
 - RipGrep (For telescope)
-- rustup (For cargo package management, rust-analyzer, and rustfmt)
 
 ## Installation 
 
