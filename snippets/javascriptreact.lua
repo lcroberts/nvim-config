@@ -33,7 +33,11 @@ end
 
 return {
   s(
-    { trig = 'rfc', name = 'react functional component' },
+    {
+      trig = 'rfc',
+      name = 'react functional component',
+      priority = 2000,
+    },
     fmt(
       [[
 	import React from 'react'
@@ -57,6 +61,7 @@ return {
     {
       trig = 'rfce',
       name = 'react functional component export',
+      priority = 2000,
     },
     fmt(
       [[
