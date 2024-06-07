@@ -1,8 +1,9 @@
 # Neovim Config
 
 This is my neovim configuration. It allows for selecting which languages are
-available by putting a list of languages (new line separated) in a file called
-languages at the root of the config.
+available by creating a file called languages.lua at the root of the config.
+The file should return a table of languages out of the supported options.
+
 
 General Dependencies:
 - lldb (debugging)

@@ -21,7 +21,8 @@ Event.mappings['User LazyFile'] = Event.mappings.LazyFile
 
 -- [[ Configure plugins ]]
 require('lazy').setup {
-  import = 'plugins',
+  { import = 'languages' },
+  { import = 'plugins' },
 }
 
 -- Create autocmds
