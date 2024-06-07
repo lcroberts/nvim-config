@@ -20,25 +20,9 @@ local Event = require 'lazy.core.handler.event'
 Event.mappings.LazyFile = { id = 'LazyFile', event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' } }
 Event.mappings['User LazyFile'] = Event.mappings.LazyFile
 
-local lang_plugins = {}
-local langs
-if vim.fn.filereadable './lua/languages.lua' == 1 then
-  langs = require 'languages'
-else
-  langs = { 'php', 'rust' }
-end
-for index, lang in ipairs(langs) do
-  local plugins = require('language_configs.' .. lang)
-  lang_plugins[index] = plugins.plugins
-end
-lang_plugins = vim.tbl_values(lang_plugins)
-local file = io.open('debug', 'w')
-file:write(vim.inspect(lang_plugins))
-file:close()
-
 -- [[ Configure plugins ]]
 require('lazy').setup {
-  lang_plugins,
+  require('utils').get_lang_plugins(),
   { import = 'plugins' },
 }
 
