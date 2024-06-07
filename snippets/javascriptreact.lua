@@ -36,45 +36,48 @@ return {
     { trig = 'rfc', name = 'react functional component' },
     fmt(
       [[
-		import React from 'react'
+	import React from 'react'
 
-		export default function {1}({2}) {{
-			return (
-				<div>
-					{3}
-				</div>
-			)
-		}}
+	export default function {1}({2}) {{
+	  return (
+	    <div>
+	      {}
+	    </div>
+	  )
+	}}
 	  ]],
       {
         i(1, get_filename()),
         i(2),
-        i(3),
+        i(0),
       }
     )
   ),
   s(
-    { trig = 'rfce', name = 'react functional component export' },
+    {
+      trig = 'rfce',
+      name = 'react functional component export',
+    },
     fmt(
       [[
-		import React from 'react'
+	import React from 'react'
 
-		function {1}({2}) {{
-			return (
-				<div>
-					{3}
-				</div>
-			)
-		}}
+	function {1}({2}) {{
+	  return (
+	    <div>
+	      {4}
+	    </div>
+	  )
+	}}
 
-		export default {}
+	export default {3}
   	  ]],
       {
 
         i(1, get_filename()),
         i(2),
-        i(3),
         rep(1),
+        i(0),
       }
     )
   ),
