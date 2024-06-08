@@ -22,12 +22,11 @@ M.ensure_installed = {
 M.lang_plugins = {}
 for index, lang in ipairs(M.languages) do
   local module = 'language_configs.' .. lang
-  local plugins = require(module)
-  -- local ok, plugins = pcall(require, module)
-  -- if not ok then
-  --   plugins = {}
-  --   vim.api.nvim_err_writeln(lang .. ' is not supported or an error occurred')
-  -- end
+  local ok, plugins = pcall(require, module)
+  if not ok then
+    plugins = {}
+    vim.api.nvim_err_writeln(lang .. ' is not supported or an error occurred')
+  end
   M.lang_plugins[index] = plugins.plugins
   table.insert(lsp_setup_functions, plugins.lsp_config)
 
@@ -37,10 +36,6 @@ for index, lang in ipairs(M.languages) do
 
   for _, value in ipairs(plugins.ensure_installed.null_ls) do
     table.insert(M.ensure_installed.null_ls, value)
-  end
-
-  for _, value in ipairs(plugins.null_ls_sources) do
-    table.insert(M.null_ls_sources, value)
   end
 end
 

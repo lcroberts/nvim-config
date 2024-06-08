@@ -14,14 +14,26 @@ M.plugins = {
   },
 }
 
-M.null_ls_sources = {}
-
 M.ensure_installed = {
-  lspconfig = {},
-  null_ls = {},
+  lspconfig = {
+    'typos_lsp',
+    'yamlls',
+    'jsonls',
+    'taplo',
+    'lua_ls',
+  },
+  null_ls = {
+    'glow',
+    'stylua',
+    'selene',
+  },
 }
 
 M.lsp_config = function(lspconfig, capabilities, capabilities_no_format)
+  lspconfig.typos_lsp.setup {
+    capabilities = capabilities,
+  }
+
   lspconfig.lua_ls.setup {
     capabilities = capabilities_no_format,
   }

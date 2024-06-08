@@ -27,13 +27,16 @@ M.plugins = {
   },
 }
 
-M.null_ls_sources = {}
-
 M.ensure_installed = {
   lspconfig = {},
   null_ls = {},
 }
 
-M.lsp_config = function(lspconfig, capabilities, capabilities_no_format) end
+M.lsp_config = function(lspconfig, capabilities, capabilities_no_format)
+  lspconfig.intelephense.setup {
+    capabilities = capabilities_no_format,
+    filetypes = { 'php', 'blade' },
+  }
+end
 
 return M

@@ -22,9 +22,6 @@ return {
     },
     opts = {
       ensure_installed = {
-        'glow',
-        'stylua',
-        'selene',
         -- End of default packages
         'shfmt',
         'golangci_lint',

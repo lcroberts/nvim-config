@@ -4,7 +4,9 @@ This is my neovim configuration. It allows for selecting which languages are
 available by creating a file called languages.lua in the lua directory of the
 config. The file should return a table of languages out of the supported
 options. The languages-example.lua file contains all valid languages in the
-correct format.
+correct format. Additional languages can be added by copying the template file
+in the lua/language\_configs directory. The one caveat is that to add null\_ls
+builtins to the sources you do have to modify the null\_ls config file.
 
 
 General Dependencies:

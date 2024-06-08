@@ -3,22 +3,32 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 null_ls.setup {
   sources = {
+    -- lua
+    null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.selene.with {
       diagnostic_config = {
         update_in_insert = false,
       },
     },
+
+    -- bash
+    null_ls.builtins.formatting.shfmt,
+
+    -- go
+    null_ls.builtins.formatting.gofmt,
+    null_ls.builtins.code_actions.impl,
     null_ls.builtins.diagnostics.golangci_lint.with {
       diagnostic_config = {
         update_in_insert = false,
       },
     },
 
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.shfmt,
-    null_ls.builtins.formatting.gofmt,
+    -- php
     null_ls.builtins.formatting.pint,
     null_ls.builtins.formatting.blade_formatter,
+
+    -- go, js/ts, lua, python
+    null_ls.builtins.code_actions.refactoring,
   },
 
   on_attach = function(client, bufnr)
