@@ -1,12 +1,7 @@
 local vim = vim
 local M = {}
 
-M.plugins = {
-  {
-    'p00f/clangd_extensions.nvim',
-    opts = {},
-  },
-}
+M.plugins = {}
 
 M.null_ls_sources = {}
 

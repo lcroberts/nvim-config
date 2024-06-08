@@ -79,17 +79,6 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'b0o/schemastore.nvim',
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      {
-        'folke/neodev.nvim',
-        opts = {
-          library = {
-            plugins = { 'neotest' },
-            types = true,
-          },
-        },
-      },
     },
     config = function()
       require 'plugins.configs.lspconfig'
@@ -131,9 +120,9 @@ return {
             pattern = '*',
             callback = function()
               if
-                  ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
-                  and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
-                  and not require('luasnip').session.jump_active
+                ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+                and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+                and not require('luasnip').session.jump_active
               then
                 require('luasnip').unlink_current()
               end

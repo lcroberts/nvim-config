@@ -22,7 +22,7 @@ Event.mappings['User LazyFile'] = Event.mappings.LazyFile
 
 -- [[ Configure plugins ]]
 require('lazy').setup {
-  require('utils').get_lang_plugins(),
+  require('language_utils').lang_plugins,
   { import = 'plugins' },
 }
 

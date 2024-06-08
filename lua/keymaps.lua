@@ -1,5 +1,7 @@
 -- Mapping mode: n (normal), x (visual), i (insert), c (command)
 local vim = vim -- Deal with lsp for vim api
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to clipboard' })
 vim.keymap.set({ 'n' }, '<leader>Y', [["+Y]], { desc = 'Yank line to clipboard' })

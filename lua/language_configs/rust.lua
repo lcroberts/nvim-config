@@ -5,7 +5,7 @@ M.plugins = {
   {
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
-    lazy = false,   -- This plugin is already lazy
+    lazy = false, -- This plugin is already lazy
   },
 
   {
@@ -28,5 +28,14 @@ M.plugins = {
     ft = 'rust',
   },
 }
+
+M.null_ls_sources = {}
+
+M.ensure_installed = {
+  lspconfig = {},
+  null_ls = {},
+}
+
+M.lsp_config = function(lspconfig, capabilities, capabilities_no_format) end
 
 return M
