@@ -2,10 +2,8 @@ local M = {}
 
 M.get_lang_plugins = function()
   local lang_plugins = {}
-  local langs
-  if vim.fn.filereadable './languages.lua' == 1 then
-    langs = require 'languages'
-  else
+  local ok, langs = pcall(require, 'languages')
+  if not ok then
     langs = {}
   end
   for index, lang in ipairs(langs) do
