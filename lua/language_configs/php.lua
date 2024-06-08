@@ -28,8 +28,13 @@ M.plugins = {
 }
 
 M.ensure_installed = {
-  lspconfig = {},
-  null_ls = {},
+  lspconfig = {
+    'intelephense',
+  },
+  null_ls = {
+    'pint',
+    'blade_formatter',
+  },
 }
 
 M.lsp_config = function(lspconfig, capabilities, capabilities_no_format)

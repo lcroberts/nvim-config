@@ -4,7 +4,9 @@ local M = {}
 M.plugins = {}
 
 M.ensure_installed = {
-  lspconfig = {},
+  lspconfig = {
+    'pylsp',
+  },
   null_ls = {},
 }
 

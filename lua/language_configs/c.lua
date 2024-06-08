@@ -9,7 +9,9 @@ M.plugins = {
 }
 
 M.ensure_installed = {
-  lspconfig = {},
+  lspconfig = {
+    'clangd',
+  },
   null_ls = {},
 }
 

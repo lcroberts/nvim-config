@@ -21,13 +21,7 @@ return {
       'nvimtools/none-ls.nvim',
     },
     opts = {
-      ensure_installed = {
-        -- End of default packages
-        'shfmt',
-        'golangci_lint',
-        'pint',
-        'blade_formatter',
-      },
+      ensure_installed = require('language_utils').ensure_installed.null_ls,
     },
     automatic_installation = true,
     config = function(_, opts)
@@ -40,25 +34,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     event = 'VeryLazy',
     opts = {
-      ensure_installed = {
-        'typos_lsp',
-        'yamlls',
-        'jsonls',
-        'taplo',
-        'lua_ls',
-        -- End of default includes
-        'bashls',
-        'pylsp',
-        'clangd',
-        'gopls',
-        'intelephense',
-        'tsserver',
-        'html',
-        'emmet_language_server',
-        'tailwindcss',
-        'cssls',
-        'sqlls',
-      },
+      ensure_installed = require('language_utils').ensure_installed.lspconfig,
     },
     dependencies = {
       'williamboman/mason.nvim',

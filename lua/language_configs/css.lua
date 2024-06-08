@@ -4,7 +4,10 @@ local M = {}
 M.plugins = {}
 
 M.ensure_installed = {
-  lspconfig = {},
+  lspconfig = {
+    'tailwindcss',
+    'cssls',
+  },
   null_ls = {},
 }
 

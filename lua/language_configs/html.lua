@@ -4,7 +4,10 @@ local M = {}
 M.plugins = {}
 
 M.ensure_installed = {
-  lspconfig = {},
+  lspconfig = {
+    'html',
+    'emmet_language_server',
+  },
   null_ls = {},
 }
 

@@ -10,7 +10,9 @@ M.plugins = {
 }
 
 M.ensure_installed = {
-  lspconfig = {},
+  lspconfig = {
+    'tsserver',
+  },
   null_ls = {},
 }
 

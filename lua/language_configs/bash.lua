@@ -4,8 +4,12 @@ local M = {}
 M.plugins = {}
 
 M.ensure_installed = {
-  lspconfig = {},
-  null_ls = {},
+  lspconfig = {
+    'bashls',
+  },
+  null_ls = {
+    'shfmt',
+  },
 }
 
 M.lsp_config = function(lspconfig, capabilities, capabilities_no_format)
