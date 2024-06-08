@@ -3,6 +3,8 @@
 -- [[ Setting options ]]
 local vim = vim
 local opt = vim.opt
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 opt.wrap = false
 opt.whichwrap:append '<>[]hl'
