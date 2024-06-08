@@ -1,5 +1,6 @@
 local lspconfig = require 'lspconfig'
 local vim = vim
+local M = {}
 
 -- Sign configuration
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
@@ -8,15 +9,15 @@ vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSig
 vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-capabilities.offsetEncoding = 'utf-8'
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = require('cmp_nvim_lsp').default_capabilities(M.capabilities)
+M.capabilities.offsetEncoding = 'utf-8'
 
-local capabilities_no_format = vim.lsp.protocol.make_client_capabilities()
-capabilities_no_format = require('cmp_nvim_lsp').default_capabilities(capabilities)
-capabilities_no_format.offsetEncoding = 'utf-8'
-capabilities_no_format.documentFormattingProvider = false
-capabilities_no_format.documentRangeFormattingProvider = false
+M.capabilities_no_format = vim.lsp.protocol.make_client_capabilities()
+M.capabilities_no_format = require('cmp_nvim_lsp').default_capabilities(M.capabilities)
+M.capabilities_no_format.offsetEncoding = 'utf-8'
+M.capabilities_no_format.documentFormattingProvider = false
+M.capabilities_no_format.documentRangeFormattingProvider = false
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
@@ -92,25 +93,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 lspconfig.intelephense.setup {
-  capabilities = capabilities_no_format,
+  capabilities = M.capabilities_no_format,
   filetypes = { 'php', 'blade' },
 }
 
 lspconfig.tailwindcss.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.bashls.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
   filetypes = { 'sh' },
 }
 
 lspconfig.pylsp.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.yamlls.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
   settings = {
     yaml = {
       schemaStore = {
@@ -123,7 +124,7 @@ lspconfig.yamlls.setup {
 }
 
 lspconfig.jsonls.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
@@ -133,45 +134,47 @@ lspconfig.jsonls.setup {
 }
 
 lspconfig.tailwindcss.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.taplo.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.clangd.setup {
   on_attach = function(client, bufnr)
     client.server_capabilities.signgatureHelpProvider = false
   end,
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.lua_ls.setup {
-  capabilities = capabilities_no_format,
+  capabilities = M.capabilities_no_format,
 }
 
 lspconfig.gopls.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.typos_lsp.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.html.setup {
-  capabilities = capabilities_no_format,
+  capabilities = M.capabilities_no_format,
   filetypes = { 'html', 'blade' },
 }
 
 lspconfig.sqlls.setup {
-  capabilities = capabilities,
+  capabilities = M.capabilities,
 }
 
 lspconfig.cssls.setup {
-  capabilities = capabilities_no_format,
+  capabilities = M.capabilities_no_format,
 }
 
 lspconfig.emmet_language_server.setup {
-  capabilities = capabilities_no_format,
+  capabilities = M.capabilities_no_format,
 }
+
+return M
