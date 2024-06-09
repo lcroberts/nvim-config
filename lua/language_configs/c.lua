@@ -12,7 +12,9 @@ M.ensure_installed = {
   lspconfig = {
     'clangd',
   },
-  null_ls = {},
+  null_ls = {
+    'codelldb',
+  },
 }
 
 M.lsp_config = function(lspconfig, capabilities, capabilities_no_format)

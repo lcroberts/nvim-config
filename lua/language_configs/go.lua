@@ -1,7 +1,16 @@
 local vim = vim
 local M = {}
 
-M.plugins = {}
+M.plugins = {
+  {
+    'leoluz/nvim-dap-go',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {},
+  },
+}
 
 M.ensure_installed = {
   lspconfig = {
@@ -9,6 +18,7 @@ M.ensure_installed = {
   },
   null_ls = {
     'golangci_lint',
+    'delve',
   },
 }
 
