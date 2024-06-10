@@ -1,3 +1,4 @@
+local vim = vim
 local ls = require 'luasnip'
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -27,65 +28,25 @@ local ms = ls.multi_snippet
 local k = require('luasnip.nodes.key_indexer').new_key
 
 local function get_filename()
-  local file = vim.fn.expand '%'
-  return string.sub(file, 1, string.len(file) - 4)
+  print(vim.fn.expand '%')
+  return 'test'
 end
-
-ls.filetype_extend('javascriptreact', { 'javascript' })
 
 return {
   s(
     {
-      trig = 'rfc',
-      name = 'react functional component',
+      trig = 'rch',
+      name = 'react custom hook',
       priority = 2000,
     },
     fmt(
       [[
-	import React from 'react'
+      function {1}({2}) {{
+        {4}
+      }}
 
-	export default function {1}({2}) {{
-	  return (
-	    <div>
-	      {}
-	    </div>
-	  )
-	}}
-	  ]],
-      {
-        d(1, function(_, snip)
-          local file = snip.env.TM_FILENAME
-          local index = string.find(file, '%.')
-          file = string.sub(file, 1, index - 1)
-          return sn(nil, {
-            i(1, file),
-          })
-        end),
-        i(2),
-        i(0),
-      }
-    )
-  ),
-  s(
-    {
-      trig = 'rfce',
-      name = 'react functional component export',
-      priority = 2000,
-    },
-    fmt(
-      [[
-	import React from 'react'
-
-	function {1}({2}) {{
-	  return (
-	    <div>
-	      {4}
-	    </div>
-	  )
-	}}
-
-	export default {3}
-  	  ]],
+      export default {3}
+      ]],
       {
         d(1, function(_, snip)
           local file = snip.env.TM_FILENAME
