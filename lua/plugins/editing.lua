@@ -186,13 +186,4 @@ return {
       require('treesj').setup(opts)
     end,
   },
-
-  {
-    'ThePrimeagen/refactoring.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    opts = {},
-  },
 }
