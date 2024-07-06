@@ -10,7 +10,6 @@ vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSig
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-capabilities.offsetEncoding = 'utf-8'
 
 local capabilities_no_format = vim.lsp.protocol.make_client_capabilities()
 capabilities_no_format = require('cmp_nvim_lsp').default_capabilities(capabilities)

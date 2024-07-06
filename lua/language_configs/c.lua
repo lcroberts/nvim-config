@@ -18,6 +18,7 @@ M.ensure_installed = {
 }
 
 M.lsp_config = function(lspconfig, capabilities, capabilities_no_format)
+  capabilities.offsetEncoding = 'utf-8'
   lspconfig.clangd.setup {
     on_attach = function(client, bufnr)
       client.server_capabilities.signgatureHelpProvider = false
