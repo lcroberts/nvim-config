@@ -91,7 +91,7 @@ Provides: tsserver (lsp), and typescript-tools.nvim (configures tsserver and add
 
 ### HTML & CSS
 
-Includes bootstrap and tailwind completions, as well as html with emmet.
+Includes tailwind completions, as well as html with emmet.
 
 ### SQL
 
@@ -102,3 +102,9 @@ Provides: sql language server
 Dependencies: Cargo/rust
 
 Provides: rustaceanvim (basic language support plugin), crates.nvim (crates support), rust.vim (more rust features)
+
+### Zig
+
+Dependencies: zig
+
+Provides: zls (zig language server)

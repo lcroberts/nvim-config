@@ -1,3 +1,7 @@
+local ft_options = {
+  org = '',
+}
+
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local suffix = (' 󰁂 %d '):format(endLnum - lnum)
@@ -39,7 +43,7 @@ vim.o.foldenable = true
 require('ufo').setup {
   fold_virt_text_handler = handler,
   provider_selector = function(bufnr, filetype, buftype)
-    return { 'treesitter' }
+    return ft_options[filetype] or { 'treesitter' }
   end,
   preview = {
     win_config = {

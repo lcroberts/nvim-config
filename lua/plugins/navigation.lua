@@ -88,7 +88,7 @@ local M = {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function(_, opts)
       require('oil').setup(opts)
-      vim.keymap.set({ 'n' }, '<leader>nn', '<cmd>Oil<cr>', { desc = 'Open fileview' })
+      vim.keymap.set({ 'n' }, '<leader>fv', '<cmd>Oil<cr>', { desc = 'Open fileview' })
     end,
   },
 }

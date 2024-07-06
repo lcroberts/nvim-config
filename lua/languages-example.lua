@@ -9,4 +9,5 @@ return {
   'python',
   'rust',
   'sql',
+  'zig',
 }

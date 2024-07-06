@@ -15,6 +15,8 @@ return {
 
   -- Useful editor commands such as SudoWrite and SudoEdit
   'tpope/vim-eunuch',
+  -- Repeat mappings
+  'tpope/vim-repeat',
 
   -- Multicursor support
   'mg979/vim-visual-multi',
