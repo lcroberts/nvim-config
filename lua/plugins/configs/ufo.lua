@@ -1,6 +1,4 @@
-local ft_options = {
-  org = '',
-}
+local ft_options = {}
 
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}

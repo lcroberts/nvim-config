@@ -4,7 +4,6 @@ vim.g.skip_ts_context_commentstring_module = true
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = 'all',
-  ignore_install = { 'org' },
 
   highlight = {
     enable = true,
@@ -13,7 +12,6 @@ require('nvim-treesitter.configs').setup {
 
   indent = {
     enable = true,
-    disable = { 'org' },
   },
 
   incremental_selection = {
