@@ -9,8 +9,8 @@ vim.keymap.set({ 'n' }, '<leader>p', [["+p]], { desc = 'Paste from clipboard' })
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste without yanking' })
 vim.keymap.set('x', '<leader>P', [["_d"+P]], { desc = 'Paste from clipboard without yanking' })
 
--- vim.keymap.set('n', '<C-n>', '<cmd>cnext<CR>zz', { desc = 'Next in quickfix list' })
--- vim.keymap.set('n', '<C-p>', '<cmd>cprev<CR>zz', { desc = 'Prev in quickfix list' })
+vim.keymap.set('n', '<M-j>', '<cmd>cnext<CR>zz', { desc = 'Next in quickfix list' })
+vim.keymap.set('n', '<M-k>', '<cmd>cprev<CR>zz', { desc = 'Prev in quickfix list' })
 -- vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Next in location list' })
 -- vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Prev in location list' })
 

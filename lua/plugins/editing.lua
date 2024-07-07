@@ -38,7 +38,6 @@ return {
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    event = 'LazyFile',
     main = 'ibl',
     opts = {
       indent = {
@@ -55,7 +54,6 @@ return {
 
   {
     'numToStr/Comment.nvim',
-    event = 'LazyFile',
     opts = {
       mappings = {
         basic = false,
@@ -64,16 +62,21 @@ return {
     },
     config = function(_, opts)
       require('Comment').setup(opts)
-      vim.keymap.set({ 'n' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { desc = 'Toggle line comment' })
-      vim.keymap.set({ 'n' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
-      vim.keymap.set({ 'v' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Toggle line comment' })
-      vim.keymap.set({ 'v' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
+      vim.keymap.set({ 'n' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
+        { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'n' }, '<leader>b/',
+        "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+        { desc = 'Toggle block comment' })
+      vim.keymap.set({ 'v' }, '<leader>/',
+        "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'v' }, '<leader>b/',
+        "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+        { desc = 'Toggle block comment' })
     end,
   },
 
   {
     'echasnovski/mini.nvim',
-    event = 'LazyFile',
     version = false,
     config = function()
       require('mini.pairs').setup {
@@ -109,7 +112,6 @@ return {
 
   {
     'RRethy/vim-illuminate',
-    event = 'LazyFile',
     opts = {
       delay = 200,
       large_file_cutoff = 2000,
@@ -131,7 +133,6 @@ return {
   {
     'folke/todo-comments.nvim',
     cmd = { 'TodoTrouble', 'TodoTelescope' },
-    event = 'LazyFile',
     opts = {
       signs = true,
     },
@@ -143,7 +144,6 @@ return {
 
   {
     'kevinhwang91/nvim-ufo',
-    event = 'LazyFile',
     dependencies = {
       'kevinhwang91/promise-async',
       'nvim-treesitter/nvim-treesitter',
@@ -163,7 +163,6 @@ return {
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    event = { 'LazyFile', 'VeryLazy' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'JoosepAlviste/nvim-ts-context-commentstring',
