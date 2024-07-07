@@ -1,5 +1,3 @@
-local vim = vim
-require 'keymaps'
 require 'options'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -22,8 +20,16 @@ Event.mappings['User LazyFile'] = Event.mappings.LazyFile
 
 -- [[ Configure plugins ]]
 require('lazy').setup {
-  require('language_utils').lang_plugins,
-  { import = 'plugins' },
+  defaults = {
+    lazy = true,
+  },
+  install = {
+    colorscheme = { 'catppuccin-mocha' },
+  },
+  spec = {
+    require('language_utils').lang_plugins,
+    { import = 'plugins' },
+  },
 }
 
 -- Create autocmds

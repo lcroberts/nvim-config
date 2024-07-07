@@ -4,6 +4,7 @@ local M = {}
 M.plugins = {
   {
     'pmizio/typescript-tools.nvim',
+    ft = { 'js', 'ts', 'jsx', 'tsx' },
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {},
   },

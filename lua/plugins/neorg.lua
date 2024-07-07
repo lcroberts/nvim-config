@@ -11,6 +11,7 @@ return {
   },
   {
     'nvim-neorg/neorg',
+    event = 'VeryLazy',
     dependencies = {
       'luarocks.nvim',
       'nvim-neorg/neorg-telescope',

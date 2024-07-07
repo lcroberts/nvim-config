@@ -4,14 +4,19 @@ local M = {}
 M.plugins = {
   -- Additional lua configuration, makes nvim stuff amazing!
   {
-    'folke/neodev.nvim',
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
     opts = {
       library = {
-        plugins = { 'neotest', 'nvim-dap-ui' },
-        types = true,
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
       },
     },
   },
+  {
+    'Bilal2453/luvit-meta',
+  }, -- optional `vim.uv` typings
 }
 
 M.ensure_installed = {
