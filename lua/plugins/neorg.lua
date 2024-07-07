@@ -56,6 +56,7 @@ return {
               default_workspace = 'notes',
             },
           },
+          ['core.export'] = {},
           ['core.keybinds'] = {
             config = {
               hook = function(keybinds)
