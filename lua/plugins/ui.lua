@@ -138,6 +138,7 @@ return {
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',
+    event = 'VeryLazy',
     opts = {
       signs = {
         add = { text = '│' },
@@ -237,17 +238,27 @@ return {
 
   {
     'NvChad/nvim-colorizer.lua',
+    event = 'VeryLazy',
     opts = {},
   },
 
   {
     'j-hui/fidget.nvim',
+    event = 'VeryLazy',
     opts = {
       notification = {
         window = {
           winblend = 0,
         },
       },
+    },
+  },
+
+  {
+    'folke/zen-mode.nvim',
+    event = 'VeryLazy',
+    opts = {
+      window = {},
     },
   },
 }

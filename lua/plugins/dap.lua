@@ -3,6 +3,7 @@ local vim = vim
 return {
   {
     'mfussenegger/nvim-dap',
+    event = 'VeryLazy',
     config = function()
       vim.keymap.set({ 'n' }, '<leader>db', '<cmd> DapToggleBreakpoint <CR>', { desc = 'Toggle Breakpoint' })
       vim.keymap.set({ 'n' }, '<leader>dc', '<cmd> DapContinue <CR>', { desc = 'Start or continue debugger' })
@@ -45,6 +46,7 @@ return {
 
   {
     'theHamsta/nvim-dap-virtual-text',
+    event = 'VeryLazy',
     dependencies = {
       'mfussenegger/nvim-dap',
       'nvim-treesitter/nvim-treesitter',
@@ -57,6 +59,7 @@ return {
 
   {
     'rcarriga/nvim-dap-ui',
+    event = 'VeryLazy',
     dependencies = {
       'mfussenegger/nvim-dap',
       'nvim-neotest/nvim-nio',

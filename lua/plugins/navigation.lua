@@ -75,6 +75,7 @@ local M = {
 
   {
     'stevearc/oil.nvim',
+    event = 'VeryLazy',
     opts = {
       keymaps = {
         ['<BS>'] = 'actions.parent',

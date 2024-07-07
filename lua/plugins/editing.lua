@@ -3,6 +3,7 @@ return {
   -- Git related plugins
   {
     'tpope/vim-rhubarb',
+    lazy = false,
     dependencies = {
       {
         'tpope/vim-fugitive',
@@ -13,16 +14,22 @@ return {
     },
   },
 
-  -- Useful editor commands such as SudoWrite and SudoEdit
-  'tpope/vim-eunuch',
-  -- Repeat mappings
-  'tpope/vim-repeat',
-
-  -- Multicursor support
-  'mg979/vim-visual-multi',
+  {
+    'mg979/vim-visual-multi',
+    lazy = false,
+  },
+  {
+    'tpope/vim-eunuch',
+    lazy = false,
+  },
+  {
+    'tpope/vim-repeat',
+    lazy = false,
+  },
 
   {
     'mbbill/undotree',
+    event = 'VeryLazy',
     config = function()
       vim.keymap.set({ 'n' }, '<leader>tu', vim.cmd.UndotreeToggle, { desc = 'Toggle undo tree' })
     end,
@@ -30,6 +37,7 @@ return {
 
   {
     url = 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
+    event = 'VeryLazy',
     config = function()
       require('rainbow-delimiters.setup').setup {}
     end,
@@ -38,6 +46,7 @@ return {
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    event = 'VeryLazy',
     main = 'ibl',
     opts = {
       indent = {
@@ -54,6 +63,7 @@ return {
 
   {
     'numToStr/Comment.nvim',
+    event = 'VeryLazy',
     opts = {
       mappings = {
         basic = false,
@@ -62,28 +72,20 @@ return {
     },
     config = function(_, opts)
       require('Comment').setup(opts)
-      vim.keymap.set({ 'n' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
-        { desc = 'Toggle line comment' })
-      vim.keymap.set({ 'n' }, '<leader>b/',
-        "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-        { desc = 'Toggle block comment' })
-      vim.keymap.set({ 'v' }, '<leader>/',
-        "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Toggle line comment' })
-      vim.keymap.set({ 'v' }, '<leader>b/',
-        "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-        { desc = 'Toggle block comment' })
+      vim.keymap.set({ 'n' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR>", { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'n' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
+      vim.keymap.set({ 'v' }, '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Toggle line comment' })
+      vim.keymap.set({ 'v' }, '<leader>b/', "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>", { desc = 'Toggle block comment' })
     end,
   },
 
   {
     'echasnovski/mini.nvim',
+    event = 'VeryLazy',
     version = false,
     config = function()
       require('mini.pairs').setup {
         modes = { insert = true, command = false, terminal = false },
-        mappings = {
-          -- ["'"] = false,
-        },
       }
       vim.keymap.set('n', 's', '<Nop>', {})
       require('mini.surround').setup()
@@ -112,6 +114,7 @@ return {
 
   {
     'RRethy/vim-illuminate',
+    event = 'VeryLazy',
     opts = {
       delay = 200,
       large_file_cutoff = 2000,
@@ -132,6 +135,7 @@ return {
   -- in your project and loads them into a browsable list.
   {
     'folke/todo-comments.nvim',
+    event = 'VeryLazy',
     cmd = { 'TodoTrouble', 'TodoTelescope' },
     opts = {
       signs = true,
@@ -144,6 +148,7 @@ return {
 
   {
     'kevinhwang91/nvim-ufo',
+    event = 'VeryLazy',
     dependencies = {
       'kevinhwang91/promise-async',
       'nvim-treesitter/nvim-treesitter',
@@ -155,6 +160,7 @@ return {
 
   {
     'whatyouhide/vim-textobj-xmlattr',
+    event = 'VeryLazy',
     dependencies = {
       'kana/vim-textobj-user',
     },
@@ -176,6 +182,7 @@ return {
 
   {
     'Wansmer/treesj',
+    event = 'VeryLazy',
     keys = {
       { 'g,', '<cmd>TSJToggle <cr>', desc = 'Toggle line split' },
     },
