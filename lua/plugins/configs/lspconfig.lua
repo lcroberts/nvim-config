@@ -13,7 +13,6 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local capabilities_no_format = vim.lsp.protocol.make_client_capabilities()
 capabilities_no_format = require('cmp_nvim_lsp').default_capabilities(capabilities)
-capabilities_no_format.offsetEncoding = 'utf-8'
 capabilities_no_format.documentFormattingProvider = false
 capabilities_no_format.documentRangeFormattingProvider = false
 
@@ -91,3 +90,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 require('language_utils').setup_lsp(lspconfig, capabilities, capabilities_no_format)
+
+vim.cmd [[filetype detect]]

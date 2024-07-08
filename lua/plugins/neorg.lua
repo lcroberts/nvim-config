@@ -2,7 +2,7 @@ return {
   {
     'vhyrro/luarocks.nvim',
     priority = 1000, -- We'd like this plugin to load first out of the rest
-    config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+    config = true,   -- This automatically runs `require("luarocks-nvim").setup()`
     opts = {
       luarocks_build_args = {
         '--with-lua-include=/usr/include',
@@ -82,7 +82,8 @@ return {
       vim.wo.conceallevel = 2
       vim.keymap.set({ 'n' }, '<leader>ni', '<cmd>Neorg index<cr>', { desc = 'Neorg index' })
       vim.keymap.set({ 'n' }, '<leader>nr', '<cmd>Neorg return<cr>', { desc = 'Neorg return' })
-      vim.keymap.set('n', '<leader>nw', '<cmd>Telescope neorg switch_workspace<cr>', { desc = 'Telescope neorg workspace' })
+      vim.keymap.set('n', '<leader>nw', '<cmd>Telescope neorg switch_workspace<cr>',
+        { desc = 'Telescope neorg workspace' })
       vim.keymap.set({ 'n' }, '<leader>fn', '<cmd>Telescope neorg find_norg_files<cr>', { desc = 'Find norg files' })
     end,
   },
